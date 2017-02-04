@@ -8,12 +8,22 @@
 
 import UIKit
 
-class PointView: UIView {
+class PointView: UIButton {
     
     private var leftBorder: CALayer!
     private var markerLabel: UILabel!
     
     private var topWinner = Int(arc4random_uniform(2)) == 0
+    
+    init() {
+        super.init(frame: CGRect.zero)
+        
+        addTarget(self, action: #selector(tapped), for: .touchUpInside)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -34,5 +44,9 @@ class PointView: UIView {
         }
         markerLabel.sizeToFit()
         markerLabel.frame = CGRect(x: 2 + ((bounds.width - 2) - markerLabel.bounds.width) / 2, y: topWinner ? (((bounds.height / 2) - 1) - markerLabel.bounds.height) / 2 : (((bounds.height / 2) - 1) - markerLabel.bounds.height) / 2 + bounds.height / 2, width: markerLabel.bounds.width, height: markerLabel.bounds.height)
+    }
+    
+    @objc private func tapped() {
+        backgroundColor = UIColor(white: 0.95, alpha: 1)
     }
 }

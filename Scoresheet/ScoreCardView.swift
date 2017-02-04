@@ -19,7 +19,7 @@ class ScoreCardView: UIScrollView {
         super.init(coder: aDecoder)
         
         layer.borderColor = UIColor(white: 0.75, alpha: 1).cgColor
-        layer.borderWidth = 1
+        layer.borderWidth = 2
         
         firstNameLabel = UILabel()
         firstNameLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)

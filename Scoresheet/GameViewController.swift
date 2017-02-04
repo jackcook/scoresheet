@@ -11,4 +11,10 @@ import UIKit
 class GameViewController: UIViewController {
     
     @IBOutlet weak var scoreCard: ScoreCardView!
+    @IBOutlet weak var firstPlayerShotSelector: ShotSelectorView!
+    @IBOutlet weak var secondPlayerShotSelector: ShotSelectorView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

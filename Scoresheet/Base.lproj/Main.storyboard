@@ -59,15 +59,58 @@
                                     <constraint firstAttribute="height" constant="96" id="Iyx-qO-ZJr"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLg-NB-gDb" customClass="ShotSelectorView" customModule="Scoresheet" customModuleProvider="target">
+                                <rect key="frame" x="48" y="280" width="440" height="192"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="192" id="DPV-MJ-6U4"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5t0-wp-WfS" customClass="ShotSelectorView" customModule="Scoresheet" customModuleProvider="target">
+                                <rect key="frame" x="536" y="280" width="440" height="192"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="192" id="u2j-NH-5Ta"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angela Chou" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7T-CC-mg4">
+                                <rect key="frame" x="48" y="232" width="440" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tai Tzu-ying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Iz-Q6-rOU">
+                                <rect key="frame" x="536" y="232" width="440" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5t0-wp-WfS" firstAttribute="leading" secondItem="iLg-NB-gDb" secondAttribute="trailing" constant="48" id="28q-8g-nWt"/>
+                            <constraint firstItem="f7T-CC-mg4" firstAttribute="top" secondItem="SBH-f4-izg" secondAttribute="bottom" constant="24" id="6gH-O2-Zxo"/>
                             <constraint firstItem="SBH-f4-izg" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="7bp-wk-hdH"/>
+                            <constraint firstItem="5t0-wp-WfS" firstAttribute="width" secondItem="iLg-NB-gDb" secondAttribute="width" id="Adl-G0-fnP"/>
+                            <constraint firstItem="iLg-NB-gDb" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="BgA-fC-RO7"/>
                             <constraint firstItem="SBH-f4-izg" firstAttribute="top" secondItem="j1s-lj-60O" secondAttribute="bottom" constant="48" id="C1R-Tv-jcp"/>
+                            <constraint firstItem="2Iz-Q6-rOU" firstAttribute="trailing" secondItem="5t0-wp-WfS" secondAttribute="trailing" id="EEz-0B-vcD"/>
+                            <constraint firstItem="2Iz-Q6-rOU" firstAttribute="leading" secondItem="5t0-wp-WfS" secondAttribute="leading" id="HCM-id-tZI"/>
+                            <constraint firstItem="iLg-NB-gDb" firstAttribute="top" secondItem="f7T-CC-mg4" secondAttribute="bottom" constant="24" id="Khw-5T-we0"/>
+                            <constraint firstItem="5t0-wp-WfS" firstAttribute="top" secondItem="2Iz-Q6-rOU" secondAttribute="bottom" constant="24" id="W6h-JW-nmF"/>
+                            <constraint firstItem="2Iz-Q6-rOU" firstAttribute="top" secondItem="SBH-f4-izg" secondAttribute="bottom" constant="24" id="WFk-bb-a20"/>
                             <constraint firstAttribute="trailing" secondItem="SBH-f4-izg" secondAttribute="trailing" constant="48" id="Zlj-cb-Wxz"/>
+                            <constraint firstAttribute="trailing" secondItem="5t0-wp-WfS" secondAttribute="trailing" constant="48" id="cuO-mc-1RJ"/>
+                            <constraint firstItem="f7T-CC-mg4" firstAttribute="leading" secondItem="iLg-NB-gDb" secondAttribute="leading" id="dk2-0r-EVz"/>
+                            <constraint firstItem="f7T-CC-mg4" firstAttribute="trailing" secondItem="iLg-NB-gDb" secondAttribute="trailing" id="pAd-MJ-wQ8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Angela Chou vs. Tai Tzu-ying" id="AST-ux-T06"/>
+                    <connections>
+                        <outlet property="firstPlayerShotSelector" destination="iLg-NB-gDb" id="p7R-Q9-Olo"/>
+                        <outlet property="scoreCard" destination="SBH-f4-izg" id="Vnt-af-7jV"/>
+                        <outlet property="secondPlayerShotSelector" destination="5t0-wp-WfS" id="SBL-nH-VhK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Gv-S7-SDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
