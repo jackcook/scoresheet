@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		EB394DBA1E45A6FB0000F7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB394DB91E45A6FB0000F7AB /* AppDelegate.swift */; };
-		EB394DBC1E45A6FB0000F7AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB394DBB1E45A6FB0000F7AB /* ViewController.swift */; };
 		EB394DBF1E45A6FB0000F7AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB394DBD1E45A6FB0000F7AB /* Main.storyboard */; };
 		EB394DC11E45A6FB0000F7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB394DC01E45A6FB0000F7AB /* Assets.xcassets */; };
 		EB394DC41E45A6FB0000F7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB394DC21E45A6FB0000F7AB /* LaunchScreen.storyboard */; };
+		EB7B4E1F1E462517009CF589 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E1E1E462517009CF589 /* GameViewController.swift */; };
+		EB7B4E211E462557009CF589 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E201E462557009CF589 /* ScoreCardView.swift */; };
+		EB7B4E231E46264B009CF589 /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E221E46264B009CF589 /* PointView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EB394DB61E45A6FB0000F7AB /* Scoresheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scoresheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB394DB91E45A6FB0000F7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EB394DBB1E45A6FB0000F7AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB394DBE1E45A6FB0000F7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB394DC01E45A6FB0000F7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB394DC31E45A6FB0000F7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB394DC51E45A6FB0000F7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB7B4E1E1E462517009CF589 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		EB7B4E201E462557009CF589 /* ScoreCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
+		EB7B4E221E46264B009CF589 /* PointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,9 @@
 			isa = PBXGroup;
 			children = (
 				EB394DB91E45A6FB0000F7AB /* AppDelegate.swift */,
-				EB394DBB1E45A6FB0000F7AB /* ViewController.swift */,
+				EB7B4E1E1E462517009CF589 /* GameViewController.swift */,
+				EB7B4E201E462557009CF589 /* ScoreCardView.swift */,
+				EB7B4E221E46264B009CF589 /* PointView.swift */,
 				EB394DBD1E45A6FB0000F7AB /* Main.storyboard */,
 				EB394DC01E45A6FB0000F7AB /* Assets.xcassets */,
 				EB394DC21E45A6FB0000F7AB /* LaunchScreen.storyboard */,
@@ -136,8 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB394DBC1E45A6FB0000F7AB /* ViewController.swift in Sources */,
+				EB7B4E1F1E462517009CF589 /* GameViewController.swift in Sources */,
 				EB394DBA1E45A6FB0000F7AB /* AppDelegate.swift in Sources */,
+				EB7B4E211E462557009CF589 /* ScoreCardView.swift in Sources */,
+				EB7B4E231E46264B009CF589 /* PointView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +273,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nyc.jackcook.Scoresheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -277,6 +286,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nyc.jackcook.Scoresheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -299,6 +309,7 @@
 				EB394DCA1E45A6FB0000F7AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,26 +1,97 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7jx-qj-dBY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Scoresheet-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Scoresheet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0j-Hd-UHC">
+                                <rect key="frame" x="487" y="369" width="50" height="30"/>
+                                <state key="normal" title="Singles"/>
+                                <connections>
+                                    <segue destination="kea-Nt-njF" kind="show" id="7iK-x7-XFh"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="K0j-Hd-UHC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JTZ-AN-vZv"/>
+                            <constraint firstItem="K0j-Hd-UHC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QSm-wf-agm"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Scoresheet" id="6Aw-nY-50u"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1949" y="123"/>
+        </scene>
+        <!--Angela Chou vs. Tai Tzu-ying-->
+        <scene sceneID="Fkg-ql-biN">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="kea-Nt-njF" customClass="GameViewController" customModule="Scoresheet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j1s-lj-60O"/>
+                        <viewControllerLayoutGuide type="bottom" id="laF-5G-Bs9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BZx-8j-sDH">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBH-f4-izg" customClass="ScoreCardView" customModule="Scoresheet" customModuleProvider="target">
+                                <rect key="frame" x="48" y="112" width="928" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="Iyx-qO-ZJr"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SBH-f4-izg" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="7bp-wk-hdH"/>
+                            <constraint firstItem="SBH-f4-izg" firstAttribute="top" secondItem="j1s-lj-60O" secondAttribute="bottom" constant="48" id="C1R-Tv-jcp"/>
+                            <constraint firstAttribute="trailing" secondItem="SBH-f4-izg" secondAttribute="trailing" constant="48" id="Zlj-cb-Wxz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Angela Chou vs. Tai Tzu-ying" id="AST-ux-T06"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Gv-S7-SDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3925" y="123"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gCY-gw-FIy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7jx-qj-dBY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1024" height="768"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jRn-Pu-Hze">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="51w-wg-TEI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVS-ZM-A0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-12" y="124"/>
         </scene>
     </scenes>
 </document>
