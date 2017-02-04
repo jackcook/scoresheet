@@ -105,6 +105,7 @@
 				TargetAttributes = {
 					EB394DB51E45A6FB0000F7AB = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 59PUM5CV3T;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -272,7 +273,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 59PUM5CV3T;
 				INFOPLIST_FILE = Scoresheet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyc.jackcook.Scoresheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -285,7 +288,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 59PUM5CV3T;
 				INFOPLIST_FILE = Scoresheet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyc.jackcook.Scoresheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";

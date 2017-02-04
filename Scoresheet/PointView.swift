@@ -47,6 +47,6 @@ class PointView: UIButton {
     }
     
     @objc private func tapped() {
-        backgroundColor = UIColor(white: 0.95, alpha: 1)
+        backgroundColor = UIColor(white: 0.9, alpha: 1)
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class ShotSelectorView: UIView {
     
+    var delegate: ShotSelectorViewDelegate?
+    
     private var shortServeButton: UIButton!
     private var longServeButton: UIButton!
     private var driveButton: UIButton!
@@ -26,48 +28,56 @@ class ShotSelectorView: UIView {
         layer.borderWidth = 2
         
         shortServeButton = UIButton(type: .system)
+        shortServeButton.addTarget(self, action: #selector(shotButtonPressed(sender:)), for: .touchUpInside)
         shortServeButton.layer.borderColor = UIColor(white: 0.75, alpha: 1).cgColor
         shortServeButton.layer.borderWidth = 1
         shortServeButton.setTitle("Short Serve", for: .normal)
         addSubview(shortServeButton)
         
         longServeButton = UIButton(type: .system)
+        longServeButton.addTarget(self, action: #selector(shotButtonPressed(sender:)), for: .touchUpInside)
         longServeButton.layer.borderColor = UIColor(white: 0.75, alpha: 1).cgColor
         longServeButton.layer.borderWidth = 1
         longServeButton.setTitle("Long Serve", for: .normal)
         addSubview(longServeButton)
         
         driveButton = UIButton(type: .system)
+        driveButton.addTarget(self, action: #selector(shotButtonPressed(sender:)), for: .touchUpInside)
         driveButton.layer.borderColor = UIColor(white: 0.75, alpha: 1).cgColor
         driveButton.layer.borderWidth = 1
         driveButton.setTitle("Drive", for: .normal)
         addSubview(driveButton)
         
         clearButton = UIButton(type: .system)
+        clearButton.addTarget(self, action: #selector(shotButtonPressed(sender:)), for: .touchUpInside)
         clearButton.layer.borderColor = UIColor(white: 0.75, alpha: 1).cgColor
         clearButton.layer.borderWidth = 1
         clearButton.setTitle("Clear", for: .normal)
         addSubview(clearButton)
         
         netButton = UIButton(type: .system)
+        netButton.addTarget(self, action: #selector(shotButtonPressed(sender:)), for: .touchUpInside)
         netButton.layer.borderColor = UIColor(white: 0.75, alpha: 1).cgColor
         netButton.layer.borderWidth = 1
         netButton.setTitle("Net", for: .normal)
         addSubview(netButton)
         
         dropButton = UIButton(type: .system)
+        dropButton.addTarget(self, action: #selector(shotButtonPressed(sender:)), for: .touchUpInside)
         dropButton.layer.borderColor = UIColor(white: 0.75, alpha: 1).cgColor
         dropButton.layer.borderWidth = 1
         dropButton.setTitle("Drop", for: .normal)
         addSubview(dropButton)
         
         smashButton = UIButton(type: .system)
+        smashButton.addTarget(self, action: #selector(shotButtonPressed(sender:)), for: .touchUpInside)
         smashButton.layer.borderColor = UIColor(white: 0.75, alpha: 1).cgColor
         smashButton.layer.borderWidth = 1
         smashButton.setTitle("Smash", for: .normal)
         addSubview(smashButton)
         
         crossNetButton = UIButton(type: .system)
+        crossNetButton.addTarget(self, action: #selector(shotButtonPressed(sender:)), for: .touchUpInside)
         crossNetButton.layer.borderColor = UIColor(white: 0.75, alpha: 1).cgColor
         crossNetButton.layer.borderWidth = 1
         crossNetButton.setTitle("Cross Net", for: .normal)
@@ -89,4 +99,32 @@ class ShotSelectorView: UIView {
         smashButton.frame = CGRect(x: w, y: 2 * h, width: w, height: h)
         crossNetButton.frame = CGRect(x: 2 * w, y: 2 * h, width: w, height: h)
     }
+    
+    @objc private func shotButtonPressed(sender: UIButton) {
+        var shot = "?"
+        
+        if sender == shortServeButton {
+            shot = "SS"
+        } else if sender == longServeButton {
+            shot = "LS"
+        } else if sender == driveButton {
+            shot = "D"
+        } else if sender == clearButton {
+            shot = "C"
+        } else if sender == netButton {
+            shot = "N"
+        } else if sender == dropButton {
+            shot = "DR"
+        } else if sender == smashButton {
+            shot = "S"
+        } else if sender == crossNetButton {
+            shot = "CN"
+        }
+        
+        delegate?.shotSelector(selector: self, shotSelected: shot)
+    }
+}
+
+protocol ShotSelectorViewDelegate {
+    func shotSelector(selector: ShotSelectorView, shotSelected shot: String)
 }
