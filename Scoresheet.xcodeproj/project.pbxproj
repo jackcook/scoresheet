@@ -22,6 +22,7 @@
 		EBD1FF861E48F1A2002C766A /* PointResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF851E48F1A2002C766A /* PointResult.swift */; };
 		EBD1FF8A1E48F565002C766A /* UIColor+Scoresheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF891E48F565002C766A /* UIColor+Scoresheet.swift */; };
 		EBD1FF8C1E48F693002C766A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF8B1E48F693002C766A /* Game.swift */; };
+		EBD1FF8E1E492441002C766A /* ShotDisplayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF8D1E492441002C766A /* ShotDisplayTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		EBD1FF851E48F1A2002C766A /* PointResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointResult.swift; sourceTree = "<group>"; };
 		EBD1FF891E48F565002C766A /* UIColor+Scoresheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Scoresheet.swift"; sourceTree = "<group>"; };
 		EBD1FF8B1E48F693002C766A /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		EBD1FF8D1E492441002C766A /* ShotDisplayTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotDisplayTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				EB7B4E221E46264B009CF589 /* PointView.swift */,
 				EB7B4E241E463783009CF589 /* ShotSelectorView.swift */,
 				EBD1FF7D1E48E591002C766A /* ResultSelectorView.swift */,
+				EBD1FF8D1E492441002C766A /* ShotDisplayTableView.swift */,
 				EBD1FF881E48F559002C766A /* Extensions */,
 				EBD1FF871E48F1DF002C766A /* Models */,
 				EB394DBD1E45A6FB0000F7AB /* Main.storyboard */,
@@ -186,6 +189,7 @@
 				EB7B4E1F1E462517009CF589 /* GameViewController.swift in Sources */,
 				EBD1FF861E48F1A2002C766A /* PointResult.swift in Sources */,
 				EB394DBA1E45A6FB0000F7AB /* AppDelegate.swift in Sources */,
+				EBD1FF8E1E492441002C766A /* ShotDisplayTableView.swift in Sources */,
 				EBD1FF7E1E48E591002C766A /* ResultSelectorView.swift in Sources */,
 				EB7B4E211E462557009CF589 /* ScoreCardView.swift in Sources */,
 				EBD1FF821E48F139002C766A /* Player.swift in Sources */,

@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -133,6 +134,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cH1-9q-K1t" customClass="ShotDisplayTableView" customModule="Scoresheet" customModuleProvider="target">
+                                <rect key="frame" x="48" y="524" width="416" height="196"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -146,6 +151,7 @@
                             <constraint firstItem="h3c-Rp-w1Z" firstAttribute="leading" secondItem="kso-PP-onC" secondAttribute="trailing" constant="16" id="9Np-lc-cYf"/>
                             <constraint firstItem="bwQ-Qg-Kn2" firstAttribute="top" secondItem="5t0-wp-WfS" secondAttribute="bottom" constant="24" id="A5S-cg-hO4"/>
                             <constraint firstItem="SBH-f4-izg" firstAttribute="top" secondItem="j1s-lj-60O" secondAttribute="bottom" constant="48" id="C1R-Tv-jcp"/>
+                            <constraint firstItem="cH1-9q-K1t" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="Djn-dR-Myo"/>
                             <constraint firstItem="5t0-wp-WfS" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="centerX" constant="48" id="Ew0-1u-aPl"/>
                             <constraint firstItem="36d-Ui-UxA" firstAttribute="leading" secondItem="M1h-WC-HOu" secondAttribute="trailing" constant="16" id="GTS-A8-XOl"/>
                             <constraint firstItem="GqS-yf-xeV" firstAttribute="top" secondItem="kso-PP-onC" secondAttribute="bottom" constant="32" id="KhS-E8-2ag"/>
@@ -159,16 +165,20 @@
                             <constraint firstItem="bwQ-Qg-Kn2" firstAttribute="leading" secondItem="5t0-wp-WfS" secondAttribute="leading" id="bDD-m8-vth"/>
                             <constraint firstItem="M1h-WC-HOu" firstAttribute="top" secondItem="GqS-yf-xeV" secondAttribute="bottom" constant="16" id="c9r-zS-nlC"/>
                             <constraint firstAttribute="trailing" secondItem="5t0-wp-WfS" secondAttribute="trailing" constant="48" id="cuO-mc-1RJ"/>
+                            <constraint firstItem="cH1-9q-K1t" firstAttribute="top" secondItem="RKN-t1-9Hx" secondAttribute="bottom" constant="24" id="gFo-Wl-22Q"/>
                             <constraint firstItem="kso-PP-onC" firstAttribute="leading" secondItem="xPe-rt-pgZ" secondAttribute="leading" id="j5V-fs-uzi"/>
                             <constraint firstItem="Pw5-as-gmb" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="jEk-Ej-IHe"/>
                             <constraint firstItem="M1h-WC-HOu" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="nN4-S3-vYZ"/>
                             <constraint firstItem="36d-Ui-UxA" firstAttribute="centerY" secondItem="M1h-WC-HOu" secondAttribute="centerY" id="nZc-EP-Dqa"/>
+                            <constraint firstItem="laF-5G-Bs9" firstAttribute="top" secondItem="cH1-9q-K1t" secondAttribute="bottom" constant="48" id="p7S-Gs-D43"/>
+                            <constraint firstAttribute="centerXWithinMargins" secondItem="cH1-9q-K1t" secondAttribute="trailing" constant="48" id="qUs-Lx-Z1L"/>
                             <constraint firstItem="h3c-Rp-w1Z" firstAttribute="centerY" secondItem="kso-PP-onC" secondAttribute="centerY" id="smp-bQ-tWP"/>
                             <constraint firstItem="RKN-t1-9Hx" firstAttribute="leading" secondItem="M1h-WC-HOu" secondAttribute="leading" id="yGw-ls-4mW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Angela Chou vs. Tai Tzu-ying" id="AST-ux-T06"/>
                     <connections>
+                        <outlet property="displayTable" destination="cH1-9q-K1t" id="3pL-Aq-Eke"/>
                         <outlet property="playerOneServeLabel" destination="bCq-8Z-sWA" id="W8c-5W-9CX"/>
                         <outlet property="playerOneServeSwitch" destination="xPe-rt-pgZ" id="ld9-W7-96H"/>
                         <outlet property="playerOneWinLabel" destination="36d-Ui-UxA" id="QJP-MN-2LG"/>

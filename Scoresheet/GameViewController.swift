@@ -13,6 +13,7 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ShotSelectorV
     @IBOutlet weak var scoreCard: ScoreCardView!
     @IBOutlet weak var shotSelector: ShotSelectorView!
     @IBOutlet weak var resultSelector: ResultSelectorView!
+    @IBOutlet weak var displayTable: ShotDisplayTableView!
     
     @IBOutlet weak var playerOneServeSwitch: UISwitch!
     @IBOutlet weak var playerOneServeLabel: UILabel!
@@ -44,6 +45,9 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ShotSelectorV
         shotSelector.delegate = self
         resultSelector.delegate = self
         
+        displayTable.server = p1
+        displayTable.opponent = p2
+        
         playerOneServeLabel.text = game.playerOne.name
         playerTwoServeLabel.text = game.playerTwo.name
         playerOneWinLabel.text = game.playerOne.name
@@ -53,11 +57,17 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ShotSelectorV
     @IBAction func playerOneServeToggled(_ sender: UISwitch) {
         playerTwoServeSwitch.setOn(!playerOneServeSwitch.isOn, animated: true)
         
+        displayTable.server = playerOneServeSwitch.isOn ? game.playerOne : game.playerTwo
+        displayTable.opponent = playerTwoServeSwitch.isOn ? game.playerOne : game.playerTwo
+        
         game.points[scoreCard.selectedIndex].server = playerOneServeSwitch.isOn ? game.playerOne : game.playerTwo
     }
     
     @IBAction func playerTwoServeToggled(_ sender: UISwitch) {
         playerOneServeSwitch.setOn(!playerTwoServeSwitch.isOn, animated: true)
+        
+        displayTable.server = playerOneServeSwitch.isOn ? game.playerOne : game.playerTwo
+        displayTable.opponent = playerTwoServeSwitch.isOn ? game.playerOne : game.playerTwo
         
         game.points[scoreCard.selectedIndex].server = playerTwoServeSwitch.isOn ? game.playerTwo : game.playerOne
     }
@@ -67,7 +77,7 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ShotSelectorV
             playerTwoWinSwitch.setOn(false, animated: true)
             
             if scoreCard.selectedIndex == game.points.count - 1 && currentPoint.winner == nil {
-                let point = Point(result: .unknown, server: nil, shots: [Shot](), winner: nil)
+                let point = Point(result: .unknown, server: game.playerOne, shots: [Shot](), winner: nil)
                 game.points.append(point)
             }
             
@@ -84,7 +94,7 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ShotSelectorV
             playerOneWinSwitch.setOn(false, animated: true)
             
             if scoreCard.selectedIndex == game.points.count - 1 && currentPoint.winner == nil {
-                let point = Point(result: .unknown, server: nil, shots: [Shot](), winner: nil)
+                let point = Point(result: .unknown, server: game.playerTwo, shots: [Shot](), winner: nil)
                 game.points.append(point)
             }
             
@@ -103,10 +113,12 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ShotSelectorV
         playerTwoWinSwitch.setOn(currentPoint.winner == game.playerTwo, animated: false)
         
         resultSelector.load(point: game.points[shot])
+        displayTable.shots = currentPoint.shots
     }
     
-    func shotSelector(selector: ShotSelectorView, shotSelected shot: String) {
-//        shotsLabel.text = (shotsLabel.text ?? "") + shot + " "
+    func shotSelector(selector: ShotSelectorView, shotSelected shot: Shot) {
+        game.points[scoreCard.selectedIndex].shots.append(shot)
+        displayTable.shots = currentPoint.shots
     }
     
     func resultSelector(_ selectorView: ResultSelectorView, selectedResult result: PointResult) {

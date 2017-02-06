@@ -101,24 +101,24 @@ class ShotSelectorView: UIView {
     }
     
     @objc private func shotButtonPressed(sender: UIButton) {
-        var shot = "?"
+        var shot = Shot.unknown
         
         if sender == shortServeButton {
-            shot = "SS"
+            shot = .shortServe
         } else if sender == longServeButton {
-            shot = "LS"
+            shot = .longServe
         } else if sender == driveButton {
-            shot = "D"
+            shot = .drive
         } else if sender == clearButton {
-            shot = "C"
+            shot = .clear
         } else if sender == netButton {
-            shot = "N"
+            shot = .net
         } else if sender == dropButton {
-            shot = "DR"
+            shot = .drop
         } else if sender == smashButton {
-            shot = "S"
+            shot = .smash
         } else if sender == crossNetButton {
-            shot = "CN"
+            shot = .crossNet
         }
         
         delegate?.shotSelector(selector: self, shotSelected: shot)
@@ -126,5 +126,5 @@ class ShotSelectorView: UIView {
 }
 
 protocol ShotSelectorViewDelegate {
-    func shotSelector(selector: ShotSelectorView, shotSelected shot: String)
+    func shotSelector(selector: ShotSelectorView, shotSelected shot: Shot)
 }
