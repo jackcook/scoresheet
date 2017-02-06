@@ -21,6 +21,6 @@ class GameViewController: UIViewController, ShotSelectorViewDelegate {
     }
     
     func shotSelector(selector: ShotSelectorView, shotSelected shot: String) {
-        shotsLabel.text = (shotsLabel.text ?? "") + shot + " "
+//        shotsLabel.text = (shotsLabel.text ?? "") + shot + " "
     }
 }

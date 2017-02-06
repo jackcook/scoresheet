@@ -15,6 +15,7 @@
 		EB7B4E211E462557009CF589 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E201E462557009CF589 /* ScoreCardView.swift */; };
 		EB7B4E231E46264B009CF589 /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E221E46264B009CF589 /* PointView.swift */; };
 		EB7B4E251E463783009CF589 /* ShotSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E241E463783009CF589 /* ShotSelectorView.swift */; };
+		EBD1FF7E1E48E591002C766A /* ResultSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF7D1E48E591002C766A /* ResultSelectorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		EB7B4E201E462557009CF589 /* ScoreCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
 		EB7B4E221E46264B009CF589 /* PointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
 		EB7B4E241E463783009CF589 /* ShotSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotSelectorView.swift; sourceTree = "<group>"; };
+		EBD1FF7D1E48E591002C766A /* ResultSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSelectorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				EB7B4E201E462557009CF589 /* ScoreCardView.swift */,
 				EB7B4E221E46264B009CF589 /* PointView.swift */,
 				EB7B4E241E463783009CF589 /* ShotSelectorView.swift */,
+				EBD1FF7D1E48E591002C766A /* ResultSelectorView.swift */,
 				EB394DBD1E45A6FB0000F7AB /* Main.storyboard */,
 				EB394DC01E45A6FB0000F7AB /* Assets.xcassets */,
 				EB394DC21E45A6FB0000F7AB /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 			files = (
 				EB7B4E1F1E462517009CF589 /* GameViewController.swift in Sources */,
 				EB394DBA1E45A6FB0000F7AB /* AppDelegate.swift in Sources */,
+				EBD1FF7E1E48E591002C766A /* ResultSelectorView.swift in Sources */,
 				EB7B4E211E462557009CF589 /* ScoreCardView.swift in Sources */,
 				EB7B4E231E46264B009CF589 /* PointView.swift in Sources */,
 				EB7B4E251E463783009CF589 /* ShotSelectorView.swift in Sources */,

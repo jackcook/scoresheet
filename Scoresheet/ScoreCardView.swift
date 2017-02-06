@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScoreCardView: UIScrollView {
+class ScoreCardView: UIScrollView, PointViewDelegate {
     
     private var firstNameLabel: UILabel!
     private var secondNameLabel: UILabel!
@@ -35,6 +35,7 @@ class ScoreCardView: UIScrollView {
         
         for i in 0..<21 {
             let pointView = PointView()
+            pointView.delegate = self
             pointView.tag = i
             
             addSubview(pointView)
@@ -66,5 +67,13 @@ class ScoreCardView: UIScrollView {
         }
         
         middleBorder.frame = CGRect(x: -1024, y: (bounds.height - 2) / 2, width: bounds.width + 2048, height: 2)
+    }
+    
+    func selected(pointView: PointView) {
+        for pv in pointViews where pv != pointView {
+            pv.backgroundColor = .white
+        }
+        
+        pointView.backgroundColor = UIColor(white: 0.9, alpha: 1)
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class PointView: UIButton {
     
+    var delegate: PointViewDelegate?
+    
     private var leftBorder: CALayer!
     private var markerLabel: UILabel!
     
@@ -47,6 +49,10 @@ class PointView: UIButton {
     }
     
     @objc private func tapped() {
-        backgroundColor = UIColor(white: 0.9, alpha: 1)
+        delegate?.selected(pointView: self)
     }
+}
+
+protocol PointViewDelegate {
+    func selected(pointView: PointView)
 }

@@ -66,15 +66,6 @@
                                     <constraint firstAttribute="height" constant="192" id="u2j-NH-5Ta"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AA-p7-UU5">
-                                <rect key="frame" x="48" y="448" width="928" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="fYH-aC-10d"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGI-fJ-qCd">
                                 <rect key="frame" x="48" y="232" width="416" height="30"/>
                                 <state key="normal" title="Angela Chou Serving"/>
@@ -83,22 +74,29 @@
                                 <rect key="frame" x="48" y="278" width="416" height="30"/>
                                 <state key="normal" title="Tai Tzu-ying Serving"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwQ-Qg-Kn2" customClass="ResultSelectorView" customModule="Scoresheet" customModuleProvider="target">
+                                <rect key="frame" x="560" y="448" width="416" height="192"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="192" id="Njz-gg-AfG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="SGI-fJ-qCd" secondAttribute="trailing" constant="48" id="1rE-ks-dvO"/>
+                            <constraint firstItem="bwQ-Qg-Kn2" firstAttribute="trailing" secondItem="5t0-wp-WfS" secondAttribute="trailing" id="63D-Z1-loX"/>
                             <constraint firstItem="SBH-f4-izg" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="7bp-wk-hdH"/>
+                            <constraint firstItem="bwQ-Qg-Kn2" firstAttribute="top" secondItem="5t0-wp-WfS" secondAttribute="bottom" constant="24" id="A5S-cg-hO4"/>
                             <constraint firstItem="SBH-f4-izg" firstAttribute="top" secondItem="j1s-lj-60O" secondAttribute="bottom" constant="48" id="C1R-Tv-jcp"/>
                             <constraint firstItem="5t0-wp-WfS" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="centerX" constant="48" id="Ew0-1u-aPl"/>
-                            <constraint firstItem="8AA-p7-UU5" firstAttribute="top" secondItem="5t0-wp-WfS" secondAttribute="bottom" constant="24" id="Iz9-Ss-xg6"/>
-                            <constraint firstAttribute="trailing" secondItem="8AA-p7-UU5" secondAttribute="trailing" constant="48" id="Kpy-fr-JRr"/>
                             <constraint firstItem="5t0-wp-WfS" firstAttribute="top" secondItem="SBH-f4-izg" secondAttribute="bottom" constant="24" id="Vo4-AW-IRo"/>
                             <constraint firstAttribute="trailing" secondItem="SBH-f4-izg" secondAttribute="trailing" constant="48" id="Zlj-cb-Wxz"/>
+                            <constraint firstItem="bwQ-Qg-Kn2" firstAttribute="leading" secondItem="5t0-wp-WfS" secondAttribute="leading" id="bDD-m8-vth"/>
                             <constraint firstAttribute="trailing" secondItem="5t0-wp-WfS" secondAttribute="trailing" constant="48" id="cuO-mc-1RJ"/>
                             <constraint firstItem="N0G-3O-ROW" firstAttribute="leading" secondItem="SGI-fJ-qCd" secondAttribute="leading" id="fGB-w5-TeY"/>
                             <constraint firstItem="SGI-fJ-qCd" firstAttribute="top" secondItem="SBH-f4-izg" secondAttribute="bottom" constant="24" id="hU0-96-EvV"/>
                             <constraint firstItem="N0G-3O-ROW" firstAttribute="trailing" secondItem="SGI-fJ-qCd" secondAttribute="trailing" id="hfC-2u-GGw"/>
-                            <constraint firstItem="8AA-p7-UU5" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="hgp-Nl-0Po"/>
                             <constraint firstItem="SGI-fJ-qCd" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="lJI-oE-IDM"/>
                             <constraint firstItem="N0G-3O-ROW" firstAttribute="top" secondItem="SGI-fJ-qCd" secondAttribute="bottom" constant="16" id="y6n-Fg-C5O"/>
                         </constraints>
@@ -107,7 +105,6 @@
                     <connections>
                         <outlet property="scoreCard" destination="SBH-f4-izg" id="Vnt-af-7jV"/>
                         <outlet property="shotSelector" destination="5t0-wp-WfS" id="fGL-6u-qdy"/>
-                        <outlet property="shotsLabel" destination="8AA-p7-UU5" id="h0x-gm-Xbw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Gv-S7-SDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
