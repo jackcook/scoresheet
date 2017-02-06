@@ -8,7 +8,7 @@
 
 struct Point {
     var result: PointResult
-    var server: Player
+    var server: Player?
     var shots: [Shot]
     var winner: Player?
 }
