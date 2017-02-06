@@ -12,23 +12,17 @@ class PointView: UIButton {
     
     var delegate: PointViewDelegate?
     
-    private var leftBorder: CALayer!
-    private var markerLabel: UILabel!
-    
-    var winner: Int = 0 {
+    var pointViewState = PointViewState.noWinner {
         didSet {
-            switch winner {
-            case 0:
-                markerLabel.isHidden = true
-            case 1, 2:
-                markerLabel.isHidden = false
-            default: break
-            }
+            markerLabel.isHidden = pointViewState == .noWinner
             
             setNeedsLayout()
             layoutIfNeeded()
         }
     }
+    
+    private var leftBorder: CALayer!
+    private var markerLabel: UILabel!
     
     init() {
         super.init(frame: CGRect.zero)
@@ -45,7 +39,7 @@ class PointView: UIButton {
         
         if leftBorder == nil {
             leftBorder = CALayer()
-            leftBorder.backgroundColor = UIColor(white: 0.75, alpha: 1).cgColor
+            leftBorder.backgroundColor = UIColor.border.cgColor
             layer.addSublayer(leftBorder)
         }
         leftBorder.frame = CGRect(x: 0, y: 0, width: 2, height: bounds.height)
@@ -62,9 +56,9 @@ class PointView: UIButton {
         
         var markerY: CGFloat = 0
         
-        if winner == 1 {
+        if pointViewState == .topWinner {
             markerY = (((bounds.height / 2) - 1) - markerLabel.bounds.height) / 2
-        } else if winner == 2 {
+        } else if pointViewState == .bottomWinner {
             markerY = (((bounds.height / 2) - 1) - markerLabel.bounds.height) / 2 + bounds.height / 2
         }
         
@@ -78,4 +72,10 @@ class PointView: UIButton {
 
 protocol PointViewDelegate {
     func selected(pointView: PointView)
+}
+
+enum PointViewState {
+    case noWinner
+    case topWinner
+    case bottomWinner
 }

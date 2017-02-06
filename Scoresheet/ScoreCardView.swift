@@ -10,29 +10,35 @@ import UIKit
 
 class ScoreCardView: UIScrollView, PointViewDelegate {
     
+    var game: Game! {
+        didSet {
+            firstNameLabel.text = game.playerOne.name
+            secondNameLabel.text = game.playerTwo.name
+        }
+    }
+    
     var scoreCardDelegate: ScoreCardViewDelegate?
+    var selectedIndex = 0
     
     private var firstNameLabel: UILabel!
     private var secondNameLabel: UILabel!
     private var pointViews: [PointView]!
     private var middleBorder: CALayer!
     
-    private var selectedIndex = 0
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        layer.borderColor = UIColor(white: 0.75, alpha: 1).cgColor
+        layer.borderColor = UIColor.border.cgColor
         layer.borderWidth = 2
         
         firstNameLabel = UILabel()
         firstNameLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
-        firstNameLabel.text = "Angela Chou"
+        firstNameLabel.text = "Player 1"
         addSubview(firstNameLabel)
         
         secondNameLabel = UILabel()
         secondNameLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
-        secondNameLabel.text = "Tai Tzu-ying"
+        secondNameLabel.text = "Player 2"
         addSubview(secondNameLabel)
         
         pointViews = [PointView]()
@@ -46,7 +52,7 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
         pointViews.append(firstPointView)
         
         middleBorder = CALayer()
-        middleBorder.backgroundColor = UIColor(white: 0.75, alpha: 1).cgColor
+        middleBorder.backgroundColor = UIColor.border.cgColor
         layer.addSublayer(middleBorder)
     }
     
@@ -72,8 +78,14 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
         middleBorder.frame = CGRect(x: -1024, y: (bounds.height - 2) / 2, width: bounds.width + 2048, height: 2)
     }
     
-    func selectPointWinner(playerOne: Bool) {
-        pointViews[selectedIndex].winner = playerOne ? 1 : 2
+    func updatePoint(point: Point) {
+        if point.winner == game.playerOne {
+            pointViews[selectedIndex].pointViewState = .topWinner
+        } else if point.winner == game.playerTwo {
+            pointViews[selectedIndex].pointViewState = .bottomWinner
+        } else {
+            pointViews[selectedIndex].pointViewState = .noWinner
+        }
         
         if selectedIndex == pointViews.count - 1 {
             let nextPointView = PointView()
@@ -95,7 +107,7 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
             pv.backgroundColor = .white
         }
         
-        pointView.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        pointView.backgroundColor = UIColor.highlighted
         
         scoreCardDelegate?.selected(scoreCard: self, shot: pointView.tag)
     }

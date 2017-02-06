@@ -16,6 +16,12 @@
 		EB7B4E231E46264B009CF589 /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E221E46264B009CF589 /* PointView.swift */; };
 		EB7B4E251E463783009CF589 /* ShotSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E241E463783009CF589 /* ShotSelectorView.swift */; };
 		EBD1FF7E1E48E591002C766A /* ResultSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF7D1E48E591002C766A /* ResultSelectorView.swift */; };
+		EBD1FF801E48F0D0002C766A /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF7F1E48F0D0002C766A /* Point.swift */; };
+		EBD1FF821E48F139002C766A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF811E48F139002C766A /* Player.swift */; };
+		EBD1FF841E48F14B002C766A /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF831E48F14B002C766A /* Shot.swift */; };
+		EBD1FF861E48F1A2002C766A /* PointResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF851E48F1A2002C766A /* PointResult.swift */; };
+		EBD1FF8A1E48F565002C766A /* UIColor+Scoresheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF891E48F565002C766A /* UIColor+Scoresheet.swift */; };
+		EBD1FF8C1E48F693002C766A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1FF8B1E48F693002C766A /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		EB7B4E221E46264B009CF589 /* PointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
 		EB7B4E241E463783009CF589 /* ShotSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotSelectorView.swift; sourceTree = "<group>"; };
 		EBD1FF7D1E48E591002C766A /* ResultSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSelectorView.swift; sourceTree = "<group>"; };
+		EBD1FF7F1E48F0D0002C766A /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		EBD1FF811E48F139002C766A /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		EBD1FF831E48F14B002C766A /* Shot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
+		EBD1FF851E48F1A2002C766A /* PointResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointResult.swift; sourceTree = "<group>"; };
+		EBD1FF891E48F565002C766A /* UIColor+Scoresheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Scoresheet.swift"; sourceTree = "<group>"; };
+		EBD1FF8B1E48F693002C766A /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +80,34 @@
 				EB7B4E221E46264B009CF589 /* PointView.swift */,
 				EB7B4E241E463783009CF589 /* ShotSelectorView.swift */,
 				EBD1FF7D1E48E591002C766A /* ResultSelectorView.swift */,
+				EBD1FF881E48F559002C766A /* Extensions */,
+				EBD1FF871E48F1DF002C766A /* Models */,
 				EB394DBD1E45A6FB0000F7AB /* Main.storyboard */,
 				EB394DC01E45A6FB0000F7AB /* Assets.xcassets */,
 				EB394DC21E45A6FB0000F7AB /* LaunchScreen.storyboard */,
 				EB394DC51E45A6FB0000F7AB /* Info.plist */,
 			);
 			path = Scoresheet;
+			sourceTree = "<group>";
+		};
+		EBD1FF871E48F1DF002C766A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EBD1FF7F1E48F0D0002C766A /* Point.swift */,
+				EBD1FF811E48F139002C766A /* Player.swift */,
+				EBD1FF831E48F14B002C766A /* Shot.swift */,
+				EBD1FF851E48F1A2002C766A /* PointResult.swift */,
+				EBD1FF8B1E48F693002C766A /* Game.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		EBD1FF881E48F559002C766A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EBD1FF891E48F565002C766A /* UIColor+Scoresheet.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,11 +184,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB7B4E1F1E462517009CF589 /* GameViewController.swift in Sources */,
+				EBD1FF861E48F1A2002C766A /* PointResult.swift in Sources */,
 				EB394DBA1E45A6FB0000F7AB /* AppDelegate.swift in Sources */,
 				EBD1FF7E1E48E591002C766A /* ResultSelectorView.swift in Sources */,
 				EB7B4E211E462557009CF589 /* ScoreCardView.swift in Sources */,
+				EBD1FF821E48F139002C766A /* Player.swift in Sources */,
+				EBD1FF801E48F0D0002C766A /* Point.swift in Sources */,
+				EBD1FF8C1E48F693002C766A /* Game.swift in Sources */,
+				EBD1FF841E48F14B002C766A /* Shot.swift in Sources */,
 				EB7B4E231E46264B009CF589 /* PointView.swift in Sources */,
 				EB7B4E251E463783009CF589 /* ShotSelectorView.swift in Sources */,
+				EBD1FF8A1E48F565002C766A /* UIColor+Scoresheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
