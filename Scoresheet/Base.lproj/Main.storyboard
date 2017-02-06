@@ -103,6 +103,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Angela Chou vs. Tai Tzu-ying" id="AST-ux-T06"/>
                     <connections>
+                        <outlet property="resultSelector" destination="bwQ-Qg-Kn2" id="am3-VI-f6J"/>
                         <outlet property="scoreCard" destination="SBH-f4-izg" id="Vnt-af-7jV"/>
                         <outlet property="shotSelector" destination="5t0-wp-WfS" id="fGL-6u-qdy"/>
                     </connections>

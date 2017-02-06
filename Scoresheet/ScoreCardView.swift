@@ -10,10 +10,14 @@ import UIKit
 
 class ScoreCardView: UIScrollView, PointViewDelegate {
     
+    var scoreCardDelegate: ScoreCardViewDelegate?
+    
     private var firstNameLabel: UILabel!
     private var secondNameLabel: UILabel!
     private var pointViews: [PointView]!
     private var middleBorder: CALayer!
+    
+    private var selectedIndex = 0
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -33,14 +37,13 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
         
         pointViews = [PointView]()
         
-        for i in 0..<21 {
-            let pointView = PointView()
-            pointView.delegate = self
-            pointView.tag = i
-            
-            addSubview(pointView)
-            pointViews.append(pointView)
-        }
+        let firstPointView = PointView()
+        firstPointView.delegate = self
+        firstPointView.tag = 0
+        firstPointView.tapped()
+        
+        addSubview(firstPointView)
+        pointViews.append(firstPointView)
         
         middleBorder = CALayer()
         middleBorder.backgroundColor = UIColor(white: 0.75, alpha: 1).cgColor
@@ -69,11 +72,35 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
         middleBorder.frame = CGRect(x: -1024, y: (bounds.height - 2) / 2, width: bounds.width + 2048, height: 2)
     }
     
+    func selectPointWinner(playerOne: Bool) {
+        pointViews[selectedIndex].winner = playerOne ? 1 : 2
+        
+        if selectedIndex == pointViews.count - 1 {
+            let nextPointView = PointView()
+            nextPointView.delegate = self
+            nextPointView.tag = pointViews.count
+            
+            insertSubview(nextPointView, at: 0)
+            pointViews.append(nextPointView)
+            
+            setNeedsLayout()
+            layoutIfNeeded()
+        }
+    }
+    
     func selected(pointView: PointView) {
+        selectedIndex = pointView.tag
+        
         for pv in pointViews where pv != pointView {
             pv.backgroundColor = .white
         }
         
         pointView.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        
+        scoreCardDelegate?.selected(scoreCard: self, shot: pointView.tag)
     }
+}
+
+protocol ScoreCardViewDelegate {
+    func selected(scoreCard: ScoreCardView, shot: Int)
 }

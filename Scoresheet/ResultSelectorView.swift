@@ -10,6 +10,8 @@ import UIKit
 
 class ResultSelectorView: UIView {
     
+    var delegate: ResultSelectorViewDelegate?
+    
     private var playerOneButton: UIButton!
     private var playerTwoButton: UIButton!
     private var couldntReachButton: UIButton!
@@ -80,24 +82,29 @@ class ResultSelectorView: UIView {
         leftInButton.frame = CGRect(x: w, y: 2 * h, width: w, height: h)
     }
     
-    @objc private func playerOneButtonPressed(sender: UIButton) {
-        playerOneButton.backgroundColor = UIColor(white: 0.9, alpha: 1)
+    func reset() {
+        playerOneButton.backgroundColor = .white
         playerTwoButton.backgroundColor = .white
-        
         couldntReachButton.backgroundColor = .white
         hitNetButton.backgroundColor = .white
         hitOutButton.backgroundColor = .white
         leftInButton.backgroundColor = .white
     }
     
+    @objc private func playerOneButtonPressed(sender: UIButton) {
+        reset()
+        
+        playerOneButton.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        
+        delegate?.selectedWinner(resultSelector: self, playerOne: true)
+    }
+    
     @objc private func playerTwoButtonPressed(sender: UIButton) {
-        playerOneButton.backgroundColor = .white
+        reset()
+        
         playerTwoButton.backgroundColor = UIColor(white: 0.9, alpha: 1)
         
-        couldntReachButton.backgroundColor = .white
-        hitNetButton.backgroundColor = .white
-        hitOutButton.backgroundColor = .white
-        leftInButton.backgroundColor = .white
+        delegate?.selectedWinner(resultSelector: self, playerOne: false)
     }
     
     @objc private func couldntReachButtonPressed(sender: UIButton) {
@@ -127,4 +134,8 @@ class ResultSelectorView: UIView {
         hitOutButton.backgroundColor = .white
         leftInButton.backgroundColor = UIColor(white: 0.9, alpha: 1)
     }
+}
+
+protocol ResultSelectorViewDelegate {
+    func selectedWinner(resultSelector: ResultSelectorView, playerOne: Bool)
 }
