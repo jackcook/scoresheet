@@ -106,6 +106,18 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ShotSelectorV
         scoreCard.updatePoint(point: currentPoint)
     }
     
+    @IBAction func clearButtonPressed(_ sender: UIButton) {
+        game.points[scoreCard.selectedIndex].shots = [Shot]()
+        displayTable.shots = game.points[scoreCard.selectedIndex].shots
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: UIButton) {
+        if let selectedIndex = displayTable.indexPathForSelectedRow {
+            game.points[scoreCard.selectedIndex].shots.remove(at: selectedIndex.row)
+            displayTable.shots = game.points[scoreCard.selectedIndex].shots
+        }
+    }
+    
     func selected(scoreCard: ScoreCardView, shot: Int) {
         playerOneServeSwitch.setOn(currentPoint.server == game.playerOne, animated: false)
         playerTwoServeSwitch.setOn(currentPoint.server == game.playerTwo, animated: false)
