@@ -52,6 +52,8 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ShotSelectorV
         playerTwoServeLabel.text = game.playerTwo.name
         playerOneWinLabel.text = game.playerOne.name
         playerTwoWinLabel.text = game.playerTwo.name
+        
+        navigationItem.title = "\(game.playerOne.name) vs. \(game.playerTwo.name)"
     }
     
     @IBAction func playerOneServeToggled(_ sender: UISwitch) {

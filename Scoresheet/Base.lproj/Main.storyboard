@@ -42,7 +42,7 @@
             </objects>
             <point key="canvasLocation" x="1949" y="123"/>
         </scene>
-        <!--Angela Chou vs. Tai Tzu-ying-->
+        <!--Player One vs. Player Two-->
         <scene sceneID="Fkg-ql-biN">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="kea-Nt-njF" customClass="GameViewController" customModule="Scoresheet" customModuleProvider="target" sceneMemberID="viewController">
@@ -201,7 +201,7 @@
                             <constraint firstItem="RKN-t1-9Hx" firstAttribute="leading" secondItem="M1h-WC-HOu" secondAttribute="leading" id="yGw-ls-4mW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Angela Chou vs. Tai Tzu-ying" id="AST-ux-T06"/>
+                    <navigationItem key="navigationItem" title="Player One vs. Player Two" id="AST-ux-T06"/>
                     <connections>
                         <outlet property="displayTable" destination="cH1-9q-K1t" id="3pL-Aq-Eke"/>
                         <outlet property="playerOneServeLabel" destination="bCq-8Z-sWA" id="W8c-5W-9CX"/>
