@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7jx-qj-dBY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kea-Nt-njF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,38 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Scoresheet-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Scoresheet" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0j-Hd-UHC">
-                                <rect key="frame" x="487" y="369" width="50" height="30"/>
-                                <state key="normal" title="Singles"/>
-                                <connections>
-                                    <segue destination="kea-Nt-njF" kind="show" id="7iK-x7-XFh"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="K0j-Hd-UHC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JTZ-AN-vZv"/>
-                            <constraint firstItem="K0j-Hd-UHC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QSm-wf-agm"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Scoresheet" id="6Aw-nY-50u"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1949" y="123"/>
-        </scene>
         <!--Player One vs. Player Two-->
         <scene sceneID="Fkg-ql-biN">
             <objects>
@@ -55,87 +23,87 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBH-f4-izg" customClass="ScoreCardView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="48" y="112" width="928" height="96"/>
+                                <rect key="frame" x="48" y="68" width="928" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="Iyx-qO-ZJr"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5t0-wp-WfS" customClass="ShotSelectorView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="560" y="232" width="416" height="192"/>
+                                <rect key="frame" x="560" y="188" width="416" height="192"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="192" id="u2j-NH-5Ta"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwQ-Qg-Kn2" customClass="ResultSelectorView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="560" y="448" width="416" height="128"/>
+                                <rect key="frame" x="560" y="404" width="416" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Njz-gg-AfG"/>
                                 </constraints>
                             </view>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xPe-rt-pgZ">
-                                <rect key="frame" x="48" y="272" width="51" height="31"/>
+                                <rect key="frame" x="48" y="228" width="51" height="31"/>
                                 <connections>
                                     <action selector="playerOneServeToggled:" destination="kea-Nt-njF" eventType="valueChanged" id="cPd-Qo-qDQ"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who served this point?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pw5-as-gmb">
-                                <rect key="frame" x="48" y="232" width="211" height="24"/>
+                                <rect key="frame" x="48" y="188" width="211" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player One" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCq-8Z-sWA">
-                                <rect key="frame" x="113" y="277" width="83" height="21"/>
+                                <rect key="frame" x="113" y="233" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kso-PP-onC">
-                                <rect key="frame" x="48" y="319" width="51" height="31"/>
+                                <rect key="frame" x="48" y="275" width="51" height="31"/>
                                 <connections>
                                     <action selector="playerTwoServeToggled:" destination="kea-Nt-njF" eventType="valueChanged" id="ea0-Jq-xax"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Two" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3c-Rp-w1Z">
-                                <rect key="frame" x="113" y="324" width="83" height="21"/>
+                                <rect key="frame" x="113" y="280" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M1h-WC-HOu">
-                                <rect key="frame" x="48" y="422" width="51" height="31"/>
+                                <rect key="frame" x="48" y="378" width="51" height="31"/>
                                 <connections>
                                     <action selector="playerOneWinToggled:" destination="kea-Nt-njF" eventType="valueChanged" id="ybH-vr-0Wl"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who won this point?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqS-yf-xeV">
-                                <rect key="frame" x="48" y="382" width="188" height="24"/>
+                                <rect key="frame" x="48" y="338" width="188" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player One" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36d-Ui-UxA">
-                                <rect key="frame" x="113" y="427" width="83" height="21"/>
+                                <rect key="frame" x="113" y="383" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RKN-t1-9Hx">
-                                <rect key="frame" x="48" y="469" width="51" height="31"/>
+                                <rect key="frame" x="48" y="425" width="51" height="31"/>
                                 <connections>
                                     <action selector="playerTwoWinToggled:" destination="kea-Nt-njF" eventType="valueChanged" id="Se1-BU-vXj"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Two" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXK-VO-U3Y">
-                                <rect key="frame" x="113" y="474" width="83" height="21"/>
+                                <rect key="frame" x="113" y="430" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cH1-9q-K1t" customClass="ShotDisplayTableView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="48" y="524" width="416" height="168"/>
+                                <rect key="frame" x="48" y="480" width="416" height="212"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-qJ-fxl">
@@ -202,6 +170,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Player One vs. Player Two" id="AST-ux-T06"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1024" height="768"/>
                     <connections>
                         <outlet property="displayTable" destination="cH1-9q-K1t" id="3pL-Aq-Eke"/>
                         <outlet property="playerOneServeLabel" destination="bCq-8Z-sWA" id="W8c-5W-9CX"/>
@@ -220,26 +190,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Gv-S7-SDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3925" y="123"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="gCY-gw-FIy">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7jx-qj-dBY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="1024" height="768"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jRn-Pu-Hze">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="51w-wg-TEI"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qVS-ZM-A0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-12" y="124"/>
         </scene>
     </scenes>
 </document>
