@@ -30,6 +30,8 @@ class CourtInputView: UIView {
     private var backMiddleRight2: UIView!
     private var backRight2: UIView!
     
+    private var netView: NetView!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -225,5 +227,11 @@ class CourtInputView: UIView {
             addSubview(backRight2)
         }
         backRight2.frame = CGRect(x: backMiddleRight2.frame.origin.x + backMiddleRight2.frame.size.width, y: middleRight2.frame.origin.y + middleRight2.frame.size.height, width: side, height: top)
+        
+        if netView == nil {
+            netView = NetView()
+            addSubview(netView)
+        }
+        netView.frame = CGRect(x: 3, y: (bounds.height - 4) / 2, width: court.width, height: 4)
     }
 }
