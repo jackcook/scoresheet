@@ -42,8 +42,8 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ShotSelectorV
         scoreCard.game = game
         scoreCard.scoreCardDelegate = self
         
-        shotSelector.delegate = self
-        resultSelector.delegate = self
+//        shotSelector.delegate = self
+//        resultSelector.delegate = self
         
         displayTable.server = p1
         displayTable.opponent = p2

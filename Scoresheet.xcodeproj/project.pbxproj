@@ -11,6 +11,7 @@
 		EB394DBF1E45A6FB0000F7AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB394DBD1E45A6FB0000F7AB /* Main.storyboard */; };
 		EB394DC11E45A6FB0000F7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB394DC01E45A6FB0000F7AB /* Assets.xcassets */; };
 		EB394DC41E45A6FB0000F7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB394DC21E45A6FB0000F7AB /* LaunchScreen.storyboard */; };
+		EB738AED1E4F8474003A0682 /* CourtInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB738AEC1E4F8474003A0682 /* CourtInputView.swift */; };
 		EB7B4E1F1E462517009CF589 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E1E1E462517009CF589 /* GameViewController.swift */; };
 		EB7B4E211E462557009CF589 /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E201E462557009CF589 /* ScoreCardView.swift */; };
 		EB7B4E231E46264B009CF589 /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B4E221E46264B009CF589 /* PointView.swift */; };
@@ -32,6 +33,7 @@
 		EB394DC01E45A6FB0000F7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB394DC31E45A6FB0000F7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB394DC51E45A6FB0000F7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB738AEC1E4F8474003A0682 /* CourtInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourtInputView.swift; sourceTree = "<group>"; };
 		EB7B4E1E1E462517009CF589 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EB7B4E201E462557009CF589 /* ScoreCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
 		EB7B4E221E46264B009CF589 /* PointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				EB7B4E241E463783009CF589 /* ShotSelectorView.swift */,
 				EBD1FF7D1E48E591002C766A /* ResultSelectorView.swift */,
 				EBD1FF8D1E492441002C766A /* ShotDisplayTableView.swift */,
+				EB738AEC1E4F8474003A0682 /* CourtInputView.swift */,
 				EBD1FF881E48F559002C766A /* Extensions */,
 				EBD1FF871E48F1DF002C766A /* Models */,
 				EB394DBD1E45A6FB0000F7AB /* Main.storyboard */,
@@ -197,6 +200,7 @@
 				EBD1FF8C1E48F693002C766A /* Game.swift in Sources */,
 				EBD1FF841E48F14B002C766A /* Shot.swift in Sources */,
 				EB7B4E231E46264B009CF589 /* PointView.swift in Sources */,
+				EB738AED1E4F8474003A0682 /* CourtInputView.swift in Sources */,
 				EB7B4E251E463783009CF589 /* ShotSelectorView.swift in Sources */,
 				EBD1FF8A1E48F565002C766A /* UIColor+Scoresheet.swift in Sources */,
 			);

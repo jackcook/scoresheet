@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E144f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kea-Nt-njF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E154a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kea-Nt-njF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,19 +28,9 @@
                                     <constraint firstAttribute="height" constant="96" id="Iyx-qO-ZJr"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5t0-wp-WfS" customClass="ShotSelectorView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="560" y="188" width="416" height="192"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5t0-wp-WfS" customClass="CourtInputView" customModule="Scoresheet" customModuleProvider="target">
+                                <rect key="frame" x="560" y="188" width="416" height="532"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="192" id="u2j-NH-5Ta"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwQ-Qg-Kn2" customClass="ResultSelectorView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="560" y="404" width="416" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Njz-gg-AfG"/>
-                                </constraints>
                             </view>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xPe-rt-pgZ">
                                 <rect key="frame" x="48" y="228" width="51" height="31"/>
@@ -134,12 +124,10 @@
                             <constraint firstItem="Pw5-as-gmb" firstAttribute="top" secondItem="SBH-f4-izg" secondAttribute="bottom" constant="24" id="3eY-RT-PXT"/>
                             <constraint firstItem="q1h-qJ-fxl" firstAttribute="top" secondItem="cH1-9q-K1t" secondAttribute="bottom" constant="8" id="3hg-gn-0GG"/>
                             <constraint firstItem="bCq-8Z-sWA" firstAttribute="leading" secondItem="xPe-rt-pgZ" secondAttribute="trailing" constant="16" id="43t-OZ-yHG"/>
-                            <constraint firstItem="bwQ-Qg-Kn2" firstAttribute="trailing" secondItem="5t0-wp-WfS" secondAttribute="trailing" id="63D-Z1-loX"/>
                             <constraint firstItem="SBH-f4-izg" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="7bp-wk-hdH"/>
                             <constraint firstItem="xPe-rt-pgZ" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="8LY-oG-EvC"/>
                             <constraint firstItem="h3c-Rp-w1Z" firstAttribute="leading" secondItem="kso-PP-onC" secondAttribute="trailing" constant="16" id="9Np-lc-cYf"/>
                             <constraint firstItem="E3s-gd-6qa" firstAttribute="trailing" secondItem="cH1-9q-K1t" secondAttribute="trailing" id="9VP-1H-XTH"/>
-                            <constraint firstItem="bwQ-Qg-Kn2" firstAttribute="top" secondItem="5t0-wp-WfS" secondAttribute="bottom" constant="24" id="A5S-cg-hO4"/>
                             <constraint firstItem="SBH-f4-izg" firstAttribute="top" secondItem="j1s-lj-60O" secondAttribute="bottom" constant="48" id="C1R-Tv-jcp"/>
                             <constraint firstItem="laF-5G-Bs9" firstAttribute="top" secondItem="E3s-gd-6qa" secondAttribute="bottom" constant="48" id="Cec-BQ-wVI"/>
                             <constraint firstItem="cH1-9q-K1t" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="Djn-dR-Myo"/>
@@ -153,12 +141,12 @@
                             <constraint firstItem="rXK-VO-U3Y" firstAttribute="leading" secondItem="RKN-t1-9Hx" secondAttribute="trailing" constant="16" id="VM1-pg-Yom"/>
                             <constraint firstItem="5t0-wp-WfS" firstAttribute="top" secondItem="SBH-f4-izg" secondAttribute="bottom" constant="24" id="Vo4-AW-IRo"/>
                             <constraint firstAttribute="trailing" secondItem="SBH-f4-izg" secondAttribute="trailing" constant="48" id="Zlj-cb-Wxz"/>
-                            <constraint firstItem="bwQ-Qg-Kn2" firstAttribute="leading" secondItem="5t0-wp-WfS" secondAttribute="leading" id="bDD-m8-vth"/>
                             <constraint firstItem="M1h-WC-HOu" firstAttribute="top" secondItem="GqS-yf-xeV" secondAttribute="bottom" constant="16" id="c9r-zS-nlC"/>
                             <constraint firstAttribute="trailing" secondItem="5t0-wp-WfS" secondAttribute="trailing" constant="48" id="cuO-mc-1RJ"/>
                             <constraint firstItem="laF-5G-Bs9" firstAttribute="top" secondItem="q1h-qJ-fxl" secondAttribute="bottom" constant="48" id="fJq-pI-KPH"/>
                             <constraint firstItem="cH1-9q-K1t" firstAttribute="top" secondItem="RKN-t1-9Hx" secondAttribute="bottom" constant="24" id="gFo-Wl-22Q"/>
                             <constraint firstItem="q1h-qJ-fxl" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="hkN-jB-fDV"/>
+                            <constraint firstItem="laF-5G-Bs9" firstAttribute="top" secondItem="5t0-wp-WfS" secondAttribute="bottom" constant="48" id="ibh-Zj-J74"/>
                             <constraint firstItem="kso-PP-onC" firstAttribute="leading" secondItem="xPe-rt-pgZ" secondAttribute="leading" id="j5V-fs-uzi"/>
                             <constraint firstItem="Pw5-as-gmb" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="jEk-Ej-IHe"/>
                             <constraint firstItem="M1h-WC-HOu" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="nN4-S3-vYZ"/>
@@ -182,7 +170,6 @@
                         <outlet property="playerTwoServeSwitch" destination="kso-PP-onC" id="eOR-e2-yvu"/>
                         <outlet property="playerTwoWinLabel" destination="rXK-VO-U3Y" id="7Th-tJ-ENz"/>
                         <outlet property="playerTwoWinSwitch" destination="RKN-t1-9Hx" id="srA-ts-JoB"/>
-                        <outlet property="resultSelector" destination="bwQ-Qg-Kn2" id="am3-VI-f6J"/>
                         <outlet property="scoreCard" destination="SBH-f4-izg" id="Vnt-af-7jV"/>
                         <outlet property="shotSelector" destination="5t0-wp-WfS" id="fGL-6u-qdy"/>
                     </connections>
