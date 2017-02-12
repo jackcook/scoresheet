@@ -93,8 +93,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7N-FR-qFh" customClass="ResultSelectorView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="48" y="480" width="440" height="240"/>
+                                <rect key="frame" x="48" y="480" width="440" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="AwB-s4-yt4"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,7 +114,6 @@
                             <constraint firstItem="SBH-f4-izg" firstAttribute="top" secondItem="j1s-lj-60O" secondAttribute="bottom" constant="48" id="C1R-Tv-jcp"/>
                             <constraint firstItem="5t0-wp-WfS" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="centerX" constant="48" id="Ew0-1u-aPl"/>
                             <constraint firstItem="36d-Ui-UxA" firstAttribute="leading" secondItem="M1h-WC-HOu" secondAttribute="trailing" constant="16" id="GTS-A8-XOl"/>
-                            <constraint firstItem="laF-5G-Bs9" firstAttribute="top" secondItem="p7N-FR-qFh" secondAttribute="bottom" constant="48" id="Imz-be-lBC"/>
                             <constraint firstItem="GqS-yf-xeV" firstAttribute="top" secondItem="kso-PP-onC" secondAttribute="bottom" constant="32" id="KhS-E8-2ag"/>
                             <constraint firstItem="rXK-VO-U3Y" firstAttribute="centerY" secondItem="RKN-t1-9Hx" secondAttribute="centerY" id="Oh3-Kg-ez0"/>
                             <constraint firstItem="xPe-rt-pgZ" firstAttribute="top" secondItem="Pw5-as-gmb" secondAttribute="bottom" constant="16" id="S6X-Te-CIJ"/>

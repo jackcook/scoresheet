@@ -12,6 +12,26 @@ class CourtInputView: UIView {
     
     var delegate: CourtInputViewDelegate?
     
+    var shots = [Shot]() {
+        didSet {
+            for shot in shotViews {
+                shot.removeFromSuperview()
+            }
+            
+            shotViews = [CourtShotView]()
+            
+            for shot in shots {
+                let shotView = CourtShotView()
+                shotView.frame = CGRect(x: (CGFloat(shot.x) * bounds.width) - 6, y: (CGFloat(shot.y) * bounds.height) - 6, width: 12, height: 12)
+                
+                addSubview(shotView)
+                shotViews.append(shotView)
+            }
+        }
+    }
+    
+    private var shotViews = [CourtShotView]()
+    
     private var backLeft1: UIView!
     private var backMiddleLeft1: UIView!
     private var backMiddleRight1: UIView!
@@ -182,9 +202,11 @@ class CourtInputView: UIView {
     
     func tapped(gestureRecognizer: UITapGestureRecognizer) {
         let point = gestureRecognizer.location(in: self)
+        let shot = Shot(x: Float(point.x / bounds.width), y: Float(point.y / bounds.height))
+        delegate?.recordedShot(shot: shot)
     }
 }
 
 protocol CourtInputViewDelegate {
-    func recordedShot(point: CGPoint)
+    func recordedShot(shot: Shot)
 }

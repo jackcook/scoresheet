@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController, ScoreCardViewDelegate, ResultSelectorViewDelegate {
+class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputViewDelegate, ResultSelectorViewDelegate {
     
     @IBOutlet weak var scoreCard: ScoreCardView!
     @IBOutlet weak var courtView: CourtInputView!
@@ -41,6 +41,7 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ResultSelecto
         scoreCard.game = game
         scoreCard.scoreCardDelegate = self
         
+        courtView.delegate = self
         resultSelector.delegate = self
         
         playerOneServeLabel.text = game.playerOne.name
@@ -103,7 +104,13 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, ResultSelecto
         playerOneWinSwitch.setOn(currentPoint.winner == game.playerOne, animated: false)
         playerTwoWinSwitch.setOn(currentPoint.winner == game.playerTwo, animated: false)
         
+        courtView.shots = game.points[shot].shots
         resultSelector.load(point: game.points[shot])
+    }
+    
+    func recordedShot(shot: Shot) {
+        game.points[scoreCard.selectedIndex].shots.append(shot)
+        courtView.shots = currentPoint.shots
     }
     
     func resultSelector(_ selectorView: ResultSelectorView, selectedResult result: PointResult) {
