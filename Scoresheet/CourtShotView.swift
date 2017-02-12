@@ -13,7 +13,7 @@ class CourtShotView: UIView {
     init() {
         super.init(frame: CGRect.zero)
         
-        backgroundColor = .red
+        backgroundColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
         
         layer.borderWidth = 3
         layer.borderColor = UIColor.white.cgColor
