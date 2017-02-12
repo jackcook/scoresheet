@@ -202,6 +202,18 @@ class CourtInputView: UIView {
     
     func tapped(gestureRecognizer: UITapGestureRecognizer) {
         let point = gestureRecognizer.location(in: self)
+        
+        let topRect = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height / 2)
+        let bottomRect = CGRect(x: 0, y: bounds.height / 2, width: bounds.width, height: bounds.height / 2)
+        
+        if let lastShot = shots.last {
+            let lastPoint = CGPoint(x: CGFloat(lastShot.x) * bounds.width, y: CGFloat(lastShot.y) * bounds.height)
+            
+            if (topRect.contains(point) && topRect.contains(lastPoint)) || (bottomRect.contains(point) && bottomRect.contains(lastPoint)) {
+                return
+            }
+        }
+        
         let shot = Shot(x: Float(point.x / bounds.width), y: Float(point.y / bounds.height))
         delegate?.recordedShot(shot: shot)
     }
