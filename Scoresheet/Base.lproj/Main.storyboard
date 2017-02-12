@@ -92,47 +92,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cH1-9q-K1t" customClass="ShotDisplayTableView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="48" y="480" width="416" height="212"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7N-FR-qFh" customClass="ResultSelectorView" customModule="Scoresheet" customModuleProvider="target">
+                                <rect key="frame" x="48" y="480" width="440" height="240"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-qJ-fxl">
-                                <rect key="frame" x="48" y="700" width="36" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="NKW-a2-lxo"/>
-                                </constraints>
-                                <state key="normal" title="Clear"/>
-                                <connections>
-                                    <action selector="clearButtonPressed:" destination="kea-Nt-njF" eventType="touchUpInside" id="RT0-1K-hAk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3s-gd-6qa">
-                                <rect key="frame" x="419" y="700" width="45" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="GgY-bq-jNE"/>
-                                </constraints>
-                                <state key="normal" title="Delete"/>
-                                <connections>
-                                    <action selector="deleteButtonPressed:" destination="kea-Nt-njF" eventType="touchUpInside" id="5G0-HF-DGn"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kso-PP-onC" firstAttribute="top" secondItem="xPe-rt-pgZ" secondAttribute="bottom" constant="16" id="00Z-JL-ghd"/>
                             <constraint firstItem="bCq-8Z-sWA" firstAttribute="centerY" secondItem="xPe-rt-pgZ" secondAttribute="centerY" id="3HX-q5-AKR"/>
                             <constraint firstItem="Pw5-as-gmb" firstAttribute="top" secondItem="SBH-f4-izg" secondAttribute="bottom" constant="24" id="3eY-RT-PXT"/>
-                            <constraint firstItem="q1h-qJ-fxl" firstAttribute="top" secondItem="cH1-9q-K1t" secondAttribute="bottom" constant="8" id="3hg-gn-0GG"/>
                             <constraint firstItem="bCq-8Z-sWA" firstAttribute="leading" secondItem="xPe-rt-pgZ" secondAttribute="trailing" constant="16" id="43t-OZ-yHG"/>
                             <constraint firstItem="SBH-f4-izg" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="7bp-wk-hdH"/>
+                            <constraint firstItem="p7N-FR-qFh" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="7h3-Wz-bAy"/>
                             <constraint firstItem="xPe-rt-pgZ" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="8LY-oG-EvC"/>
                             <constraint firstItem="h3c-Rp-w1Z" firstAttribute="leading" secondItem="kso-PP-onC" secondAttribute="trailing" constant="16" id="9Np-lc-cYf"/>
-                            <constraint firstItem="E3s-gd-6qa" firstAttribute="trailing" secondItem="cH1-9q-K1t" secondAttribute="trailing" id="9VP-1H-XTH"/>
+                            <constraint firstAttribute="centerXWithinMargins" secondItem="p7N-FR-qFh" secondAttribute="trailing" constant="24" id="BcW-z6-4Yp"/>
                             <constraint firstItem="SBH-f4-izg" firstAttribute="top" secondItem="j1s-lj-60O" secondAttribute="bottom" constant="48" id="C1R-Tv-jcp"/>
-                            <constraint firstItem="laF-5G-Bs9" firstAttribute="top" secondItem="E3s-gd-6qa" secondAttribute="bottom" constant="48" id="Cec-BQ-wVI"/>
-                            <constraint firstItem="cH1-9q-K1t" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="Djn-dR-Myo"/>
                             <constraint firstItem="5t0-wp-WfS" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="centerX" constant="48" id="Ew0-1u-aPl"/>
                             <constraint firstItem="36d-Ui-UxA" firstAttribute="leading" secondItem="M1h-WC-HOu" secondAttribute="trailing" constant="16" id="GTS-A8-XOl"/>
+                            <constraint firstItem="laF-5G-Bs9" firstAttribute="top" secondItem="p7N-FR-qFh" secondAttribute="bottom" constant="48" id="Imz-be-lBC"/>
                             <constraint firstItem="GqS-yf-xeV" firstAttribute="top" secondItem="kso-PP-onC" secondAttribute="bottom" constant="32" id="KhS-E8-2ag"/>
                             <constraint firstItem="rXK-VO-U3Y" firstAttribute="centerY" secondItem="RKN-t1-9Hx" secondAttribute="centerY" id="Oh3-Kg-ez0"/>
                             <constraint firstItem="xPe-rt-pgZ" firstAttribute="top" secondItem="Pw5-as-gmb" secondAttribute="bottom" constant="16" id="S6X-Te-CIJ"/>
@@ -143,17 +122,13 @@
                             <constraint firstAttribute="trailing" secondItem="SBH-f4-izg" secondAttribute="trailing" constant="48" id="Zlj-cb-Wxz"/>
                             <constraint firstItem="M1h-WC-HOu" firstAttribute="top" secondItem="GqS-yf-xeV" secondAttribute="bottom" constant="16" id="c9r-zS-nlC"/>
                             <constraint firstAttribute="trailing" secondItem="5t0-wp-WfS" secondAttribute="trailing" constant="48" id="cuO-mc-1RJ"/>
-                            <constraint firstItem="laF-5G-Bs9" firstAttribute="top" secondItem="q1h-qJ-fxl" secondAttribute="bottom" constant="48" id="fJq-pI-KPH"/>
-                            <constraint firstItem="cH1-9q-K1t" firstAttribute="top" secondItem="RKN-t1-9Hx" secondAttribute="bottom" constant="24" id="gFo-Wl-22Q"/>
-                            <constraint firstItem="q1h-qJ-fxl" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="hkN-jB-fDV"/>
                             <constraint firstItem="laF-5G-Bs9" firstAttribute="top" secondItem="5t0-wp-WfS" secondAttribute="bottom" constant="48" id="ibh-Zj-J74"/>
                             <constraint firstItem="kso-PP-onC" firstAttribute="leading" secondItem="xPe-rt-pgZ" secondAttribute="leading" id="j5V-fs-uzi"/>
                             <constraint firstItem="Pw5-as-gmb" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="jEk-Ej-IHe"/>
                             <constraint firstItem="M1h-WC-HOu" firstAttribute="leading" secondItem="BZx-8j-sDH" secondAttribute="leading" constant="48" id="nN4-S3-vYZ"/>
                             <constraint firstItem="36d-Ui-UxA" firstAttribute="centerY" secondItem="M1h-WC-HOu" secondAttribute="centerY" id="nZc-EP-Dqa"/>
-                            <constraint firstItem="E3s-gd-6qa" firstAttribute="top" secondItem="cH1-9q-K1t" secondAttribute="bottom" constant="8" id="om7-5X-e3X"/>
-                            <constraint firstAttribute="centerXWithinMargins" secondItem="cH1-9q-K1t" secondAttribute="trailing" constant="48" id="qUs-Lx-Z1L"/>
                             <constraint firstItem="h3c-Rp-w1Z" firstAttribute="centerY" secondItem="kso-PP-onC" secondAttribute="centerY" id="smp-bQ-tWP"/>
+                            <constraint firstItem="p7N-FR-qFh" firstAttribute="top" secondItem="RKN-t1-9Hx" secondAttribute="bottom" constant="24" id="tvI-nq-Ho0"/>
                             <constraint firstItem="RKN-t1-9Hx" firstAttribute="leading" secondItem="M1h-WC-HOu" secondAttribute="leading" id="yGw-ls-4mW"/>
                         </constraints>
                     </view>
@@ -161,7 +136,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="1024" height="768"/>
                     <connections>
-                        <outlet property="displayTable" destination="cH1-9q-K1t" id="3pL-Aq-Eke"/>
+                        <outlet property="courtView" destination="5t0-wp-WfS" id="amP-Py-g0e"/>
                         <outlet property="playerOneServeLabel" destination="bCq-8Z-sWA" id="W8c-5W-9CX"/>
                         <outlet property="playerOneServeSwitch" destination="xPe-rt-pgZ" id="ld9-W7-96H"/>
                         <outlet property="playerOneWinLabel" destination="36d-Ui-UxA" id="QJP-MN-2LG"/>
@@ -170,8 +145,8 @@
                         <outlet property="playerTwoServeSwitch" destination="kso-PP-onC" id="eOR-e2-yvu"/>
                         <outlet property="playerTwoWinLabel" destination="rXK-VO-U3Y" id="7Th-tJ-ENz"/>
                         <outlet property="playerTwoWinSwitch" destination="RKN-t1-9Hx" id="srA-ts-JoB"/>
+                        <outlet property="resultSelector" destination="p7N-FR-qFh" id="e5f-Rb-ftg"/>
                         <outlet property="scoreCard" destination="SBH-f4-izg" id="Vnt-af-7jV"/>
-                        <outlet property="shotSelector" destination="5t0-wp-WfS" id="fGL-6u-qdy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Gv-S7-SDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
