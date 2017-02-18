@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75966A9A1E58D2CE00953134 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75966A991E58D2CE00953134 /* MenuViewController.swift */; };
+		75966A9C1E58DF5900953134 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75966A9B1E58DF5900953134 /* MenuHeaderView.swift */; };
+		75966A9E1E58DFC600953134 /* MenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75966A9D1E58DFC600953134 /* MenuHeaderView.xib */; };
+		75966AA01E58E0DA00953134 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75966A9F1E58E0DA00953134 /* MenuCell.xib */; };
+		75966AA21E58E0E300953134 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75966AA11E58E0E300953134 /* MenuCell.swift */; };
 		EB394DBA1E45A6FB0000F7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB394DB91E45A6FB0000F7AB /* AppDelegate.swift */; };
 		EB394DBF1E45A6FB0000F7AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB394DBD1E45A6FB0000F7AB /* Main.storyboard */; };
 		EB394DC11E45A6FB0000F7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB394DC01E45A6FB0000F7AB /* Assets.xcassets */; };
@@ -28,6 +33,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		75966A991E58D2CE00953134 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		75966A9B1E58DF5900953134 /* MenuHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
+		75966A9D1E58DFC600953134 /* MenuHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuHeaderView.xib; sourceTree = "<group>"; };
+		75966A9F1E58E0DA00953134 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
+		75966AA11E58E0E300953134 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		EB394DB61E45A6FB0000F7AB /* Scoresheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scoresheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB394DB91E45A6FB0000F7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB394DBE1E45A6FB0000F7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,6 +91,11 @@
 			isa = PBXGroup;
 			children = (
 				EB394DB91E45A6FB0000F7AB /* AppDelegate.swift */,
+				75966A991E58D2CE00953134 /* MenuViewController.swift */,
+				75966A9B1E58DF5900953134 /* MenuHeaderView.swift */,
+				75966A9D1E58DFC600953134 /* MenuHeaderView.xib */,
+				75966AA11E58E0E300953134 /* MenuCell.swift */,
+				75966A9F1E58E0DA00953134 /* MenuCell.xib */,
 				EB7B4E1E1E462517009CF589 /* GameViewController.swift */,
 				EB7B4E201E462557009CF589 /* ScoreCardView.swift */,
 				EB7B4E221E46264B009CF589 /* PointView.swift */,
@@ -179,7 +194,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75966A9E1E58DFC600953134 /* MenuHeaderView.xib in Resources */,
 				EB394DC41E45A6FB0000F7AB /* LaunchScreen.storyboard in Resources */,
+				75966AA01E58E0DA00953134 /* MenuCell.xib in Resources */,
 				EB394DC11E45A6FB0000F7AB /* Assets.xcassets in Resources */,
 				EB394DBF1E45A6FB0000F7AB /* Main.storyboard in Resources */,
 			);
@@ -193,12 +210,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB7B4E1F1E462517009CF589 /* GameViewController.swift in Sources */,
+				75966A9C1E58DF5900953134 /* MenuHeaderView.swift in Sources */,
+				75966AA21E58E0E300953134 /* MenuCell.swift in Sources */,
 				EBD1FF861E48F1A2002C766A /* PointResult.swift in Sources */,
 				EB394DBA1E45A6FB0000F7AB /* AppDelegate.swift in Sources */,
 				EBD1FF7E1E48E591002C766A /* ResultSelectorView.swift in Sources */,
 				EB7B4E211E462557009CF589 /* ScoreCardView.swift in Sources */,
 				EB738AF11E4FAAC7003A0682 /* NetView.swift in Sources */,
 				EBD1FF821E48F139002C766A /* Player.swift in Sources */,
+				75966A9A1E58D2CE00953134 /* MenuViewController.swift in Sources */,
 				EBD1FF801E48F0D0002C766A /* Point.swift in Sources */,
 				EB68BBBE1E4FF3AE00D81868 /* CourtShotView.swift in Sources */,
 				EBD1FF8C1E48F693002C766A /* Game.swift in Sources */,

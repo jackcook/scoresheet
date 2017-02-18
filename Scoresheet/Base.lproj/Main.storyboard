@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E154a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kea-Nt-njF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3QF-Gc-96c">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,62 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Menu View Controller-->
+        <scene sceneID="xaf-BT-4he">
+            <objects>
+                <viewController id="Q4j-oC-80g" customClass="MenuViewController" customModule="Scoresheet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1f7-tV-WeO"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ncv-oi-3b4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RQS-yy-JeS">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBM-pO-Amz">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="92"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your games" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0C-HE-8sx">
+                                        <rect key="frame" x="32" y="41" width="121" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="U0C-HE-8sx" firstAttribute="centerY" secondItem="HBM-pO-Amz" secondAttribute="centerY" constant="8" id="OTH-Q8-MMD"/>
+                                    <constraint firstItem="U0C-HE-8sx" firstAttribute="leading" secondItem="HBM-pO-Amz" secondAttribute="leading" constant="32" id="VhZ-HF-NFc"/>
+                                    <constraint firstAttribute="height" constant="92" id="VrE-Ec-ZvZ"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IfA-PA-Rct">
+                                <rect key="frame" x="0.0" y="92" width="768" height="932"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="HBM-pO-Amz" firstAttribute="top" secondItem="RQS-yy-JeS" secondAttribute="top" id="4X7-8X-iwg"/>
+                            <constraint firstItem="HBM-pO-Amz" firstAttribute="leading" secondItem="RQS-yy-JeS" secondAttribute="leading" id="7Pt-Z4-aJq"/>
+                            <constraint firstAttribute="trailing" secondItem="HBM-pO-Amz" secondAttribute="trailing" id="DIK-dM-Jdw"/>
+                            <constraint firstAttribute="trailing" secondItem="IfA-PA-Rct" secondAttribute="trailing" id="duG-e2-nY1"/>
+                            <constraint firstItem="IfA-PA-Rct" firstAttribute="leading" secondItem="RQS-yy-JeS" secondAttribute="leading" id="nXb-Pq-1DP"/>
+                            <constraint firstItem="IfA-PA-Rct" firstAttribute="top" secondItem="HBM-pO-Amz" secondAttribute="bottom" id="rER-O2-oTi"/>
+                            <constraint firstItem="Ncv-oi-3b4" firstAttribute="top" secondItem="IfA-PA-Rct" secondAttribute="bottom" id="vxH-QA-g4N"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7dY-7K-PAk"/>
+                    <connections>
+                        <outlet property="tableView" destination="IfA-PA-Rct" id="nOI-M8-2b8"/>
+                        <outlet property="topBar" destination="HBM-pO-Amz" id="AZE-Qq-IGi"/>
+                        <segue destination="kea-Nt-njF" kind="show" identifier="gameSegue" id="7vK-2L-xaE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YsX-qj-BQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2964.8000000000002" y="122.33883058470765"/>
+        </scene>
         <!--Player One vs. Player Two-->
         <scene sceneID="Fkg-ql-biN">
             <objects>
@@ -19,17 +75,17 @@
                         <viewControllerLayoutGuide type="bottom" id="laF-5G-Bs9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BZx-8j-sDH">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBH-f4-izg" customClass="ScoreCardView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="48" y="68" width="928" height="96"/>
+                                <rect key="frame" x="48" y="68" width="672" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="Iyx-qO-ZJr"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5t0-wp-WfS" customClass="CourtInputView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="560" y="188" width="416" height="532"/>
+                                <rect key="frame" x="432" y="188" width="288" height="788"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xPe-rt-pgZ">
@@ -93,7 +149,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7N-FR-qFh" customClass="ResultSelectorView" customModule="Scoresheet" customModuleProvider="target">
-                                <rect key="frame" x="48" y="480" width="440" height="128"/>
+                                <rect key="frame" x="48" y="480" width="312" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="AwB-s4-yt4"/>
@@ -135,8 +191,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Player One vs. Player Two" id="AST-ux-T06"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="1024" height="768"/>
                     <connections>
                         <outlet property="courtView" destination="5t0-wp-WfS" id="amP-Py-g0e"/>
                         <outlet property="playerOneServeLabel" destination="bCq-8Z-sWA" id="W8c-5W-9CX"/>
@@ -153,7 +207,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Gv-S7-SDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3925" y="123"/>
+            <point key="canvasLocation" x="4635" y="122"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bPP-iT-Xiv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="3QF-Gc-96c" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="768" height="1024"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bEq-li-USv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Q4j-oC-80g" kind="relationship" relationship="rootViewController" id="cjc-rr-HIC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nbS-so-ZtA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1418" y="122"/>
         </scene>
     </scenes>
 </document>
