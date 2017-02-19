@@ -11,9 +11,9 @@ import Foundation
 struct Point {
     
     var result: PointResult
-    var server: Player?
+    var serverId: Int
     var shots: [Shot]
-    var winner: Player?
+    var winnerId: Int
     
     var object: [String: Any] {
         var shotsData = [[String: Float]]()
@@ -27,13 +27,8 @@ struct Point {
             "shots": shotsData
         ] as [String: Any]
         
-        if let server = server {
-            data["server"] = server.name
-        }
-        
-        if let winner = winner {
-            data["winner"] = winner.name
-        }
+        data["serverId"] = serverId
+        data["winnerId"] = winnerId
         
         return data
     }
@@ -45,8 +40,10 @@ struct Point {
             return nil
         }
         
-        if let server = data["server"] as? String {
-            self.server = Player(name: server)
+        if let serverId = data["serverId"] as? Int {
+            self.serverId = serverId
+        } else {
+            return nil
         }
         
         if let shots = data["shots"] as? [[String: Float]] {
@@ -59,15 +56,24 @@ struct Point {
             return nil
         }
         
-        if let winner = data["winner"] as? String {
-            self.winner = Player(name: winner)
+        if let winnerId = data["winnerId"] as? Int {
+            self.winnerId = winnerId
+        } else {
+            return nil
         }
     }
     
-    init(result: PointResult, server: Player?, shots: [Shot], winner: Player?) {
+    init() {
+        result = .unknown
+        serverId = 1
+        shots = [Shot]()
+        winnerId = 0
+    }
+    
+    init(result: PointResult, serverId: Int, shots: [Shot], winnerId: Int) {
         self.result = result
-        self.server = server
+        self.serverId = serverId
         self.shots = shots
-        self.winner = winner
+        self.winnerId = winnerId
     }
 }

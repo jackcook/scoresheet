@@ -68,9 +68,9 @@ class MenuCell: UITableViewCell {
         var playerTwoScore = 0
         
         for point in game.points {
-            if point.winner == game.playerOne {
+            if point.winnerId == 1 {
                 playerOneScore += 1
-            } else if point.winner == game.playerTwo {
+            } else if point.winnerId == 2 {
                 playerTwoScore += 1
             }
         }

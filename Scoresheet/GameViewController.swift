@@ -44,10 +44,7 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
         backButton.tintColor = .white
         
         if game == nil {
-            let p1 = Player(name: "Carolina Marin")
-            let p2 = Player(name: "Tai Tzu-ying")
-            let firstPoint = Point(result: .unknown, server: nil, shots: [Shot](), winner: nil)
-            game = Game(playerOne: p1, playerTwo: p2, points: [firstPoint])
+            game = Game()
         }
         
         scoreCard.game = game
@@ -67,36 +64,40 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
         navigationItem.title = "\(game.playerOne.name) vs. \(game.playerTwo.name)"
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let _ = scoreCard.resignFirstResponder()
+    }
+    
     @IBAction func backButtonPressed(sender: UIButton) {
         let _ = navigationController?.popViewController(animated: true)
         
-        game.save()
+        scoreCard.game.save()
     }
     
     @IBAction func playerOneServeToggled(_ sender: UISwitch) {
         playerTwoServeSwitch.setOn(!playerOneServeSwitch.isOn, animated: true)
         
-        game.points[scoreCard.selectedIndex].server = playerOneServeSwitch.isOn ? game.playerOne : game.playerTwo
+        game.points[scoreCard.selectedIndex].serverId = playerOneServeSwitch.isOn ? 1 : 2
     }
     
     @IBAction func playerTwoServeToggled(_ sender: UISwitch) {
         playerOneServeSwitch.setOn(!playerTwoServeSwitch.isOn, animated: true)
         
-        game.points[scoreCard.selectedIndex].server = playerTwoServeSwitch.isOn ? game.playerTwo : game.playerOne
+        game.points[scoreCard.selectedIndex].serverId = playerTwoServeSwitch.isOn ? 2 : 1
     }
     
     @IBAction func playerOneWinToggled(_ sender: UISwitch) {
         if sender.isOn {
             playerTwoWinSwitch.setOn(false, animated: true)
             
-            if scoreCard.selectedIndex == game.points.count - 1 && currentPoint.winner == nil {
-                let point = Point(result: .unknown, server: game.playerOne, shots: [Shot](), winner: nil)
+            if scoreCard.selectedIndex == game.points.count - 1 && currentPoint.winnerId == 0 {
+                let point = Point(result: .unknown, serverId: 1, shots: [Shot](), winnerId: 0)
                 game.points.append(point)
             }
             
-            game.points[scoreCard.selectedIndex].winner = game.playerOne
+            game.points[scoreCard.selectedIndex].winnerId = 1
         } else {
-            game.points[scoreCard.selectedIndex].winner = nil
+            game.points[scoreCard.selectedIndex].winnerId = 0
         }
         
         scoreCard.updatePoint(point: currentPoint)
@@ -106,24 +107,24 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
         if sender.isOn {
             playerOneWinSwitch.setOn(false, animated: true)
             
-            if scoreCard.selectedIndex == game.points.count - 1 && currentPoint.winner == nil {
-                let point = Point(result: .unknown, server: game.playerTwo, shots: [Shot](), winner: nil)
+            if scoreCard.selectedIndex == game.points.count - 1 && currentPoint.winnerId == 0 {
+                let point = Point(result: .unknown, serverId: 2, shots: [Shot](), winnerId: 0)
                 game.points.append(point)
             }
             
-            game.points[scoreCard.selectedIndex].winner = game.playerTwo
+            game.points[scoreCard.selectedIndex].winnerId = 2
         } else {
-            game.points[scoreCard.selectedIndex].winner = nil
+            game.points[scoreCard.selectedIndex].winnerId = 0
         }
         
         scoreCard.updatePoint(point: currentPoint)
     }
     
     func selected(scoreCard: ScoreCardView, shot: Int) {
-        playerOneServeSwitch.setOn(currentPoint.server == game.playerOne, animated: false)
-        playerTwoServeSwitch.setOn(currentPoint.server == game.playerTwo, animated: false)
-        playerOneWinSwitch.setOn(currentPoint.winner == game.playerOne, animated: false)
-        playerTwoWinSwitch.setOn(currentPoint.winner == game.playerTwo, animated: false)
+        playerOneServeSwitch.setOn(currentPoint.serverId == 1, animated: false)
+        playerTwoServeSwitch.setOn(currentPoint.serverId == 2, animated: false)
+        playerOneWinSwitch.setOn(currentPoint.winnerId == 1, animated: false)
+        playerTwoWinSwitch.setOn(currentPoint.winnerId == 2, animated: false)
         
         courtView.shots = game.points[shot].shots
         resultSelector.load(point: game.points[shot])

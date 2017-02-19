@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ScoreCardView: UIScrollView, PointViewDelegate {
+class ScoreCardView: UIScrollView, PointViewDelegate, UITextFieldDelegate {
     
     var game: Game! {
         didSet {
-            firstNameLabel.text = game.playerOne.name
-            secondNameLabel.text = game.playerTwo.name
+            firstNameTextField.text = game.playerOne.name
+            secondNameTextField.text = game.playerTwo.name
             points = game.points
             
             pointViews[0].tapped()
@@ -35,9 +35,9 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
                 let pointView = PointView()
                 pointView.delegate = self
                 
-                if point.winner == game.playerOne {
+                if point.winnerId == 1 {
                     pointView.pointViewState = .topWinner
-                } else if point.winner == game.playerTwo {
+                } else if point.winnerId == 2 {
                     pointView.pointViewState = .bottomWinner
                 } else {
                     pointView.pointViewState = .noWinner
@@ -56,8 +56,8 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
         }
     }
     
-    private var firstNameLabel: UILabel!
-    private var secondNameLabel: UILabel!
+    private var firstNameTextField: UITextField!
+    private var secondNameTextField: UITextField!
     private var pointViews = [PointView]()
     private var middleBorder: CALayer!
     
@@ -67,15 +67,19 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
         layer.borderColor = UIColor.border.cgColor
         layer.borderWidth = 2
         
-        firstNameLabel = UILabel()
-        firstNameLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
-        firstNameLabel.text = "Player 1"
-        addSubview(firstNameLabel)
+        firstNameTextField = UITextField()
+        firstNameTextField.delegate = self
+        firstNameTextField.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
+        firstNameTextField.returnKeyType = .done
+        firstNameTextField.text = "Player 1"
+        addSubview(firstNameTextField)
         
-        secondNameLabel = UILabel()
-        secondNameLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
-        secondNameLabel.text = "Player 2"
-        addSubview(secondNameLabel)
+        secondNameTextField = UITextField()
+        secondNameTextField.delegate = self
+        secondNameTextField.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
+        secondNameTextField.returnKeyType = .done
+        secondNameTextField.text = "Player 2"
+        addSubview(secondNameTextField)
         
         middleBorder = CALayer()
         middleBorder.backgroundColor = UIColor.border.cgColor
@@ -85,13 +89,13 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        firstNameLabel.sizeToFit()
-        firstNameLabel.frame = CGRect(x: 16, y: ((bounds.height / 2) - firstNameLabel.bounds.height) / 2, width: firstNameLabel.bounds.width, height: firstNameLabel.bounds.height)
+        firstNameTextField.sizeToFit()
+        firstNameTextField.frame = CGRect(x: 16, y: ((bounds.height / 2) - firstNameTextField.bounds.height) / 2, width: firstNameTextField.bounds.width, height: firstNameTextField.bounds.height)
         
-        secondNameLabel.sizeToFit()
-        secondNameLabel.frame = CGRect(x: 16, y: ((bounds.height / 2) - secondNameLabel.bounds.height) / 2 + bounds.height / 2, width: secondNameLabel.bounds.width, height: secondNameLabel.bounds.height)
+        secondNameTextField.sizeToFit()
+        secondNameTextField.frame = CGRect(x: 16, y: ((bounds.height / 2) - secondNameTextField.bounds.height) / 2 + bounds.height / 2, width: secondNameTextField.bounds.width, height: secondNameTextField.bounds.height)
         
-        let startingX = max(firstNameLabel.bounds.width, secondNameLabel.bounds.width) + 32
+        let startingX = max(firstNameTextField.bounds.width, secondNameTextField.bounds.width) + 32
         
         for (idx, pointView) in pointViews.enumerated() {
             pointView.frame = CGRect(x: startingX + CGFloat(idx) * 44, y: 0, width: 44, height: bounds.height)
@@ -104,11 +108,18 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
         middleBorder.frame = CGRect(x: -1024, y: (bounds.height - 2) / 2, width: bounds.width + 2048, height: 2)
     }
     
+    override func resignFirstResponder() -> Bool {
+        firstNameTextField.resignFirstResponder()
+        secondNameTextField.resignFirstResponder()
+        
+        return true
+    }
+    
     func updatePoint(point: Point) {
         points[selectedIndex] = point
         
         if selectedIndex == pointViews.count - 1 {
-            let newPoint = Point(result: .unknown, server: point.winner == game.playerOne ? game.playerOne : game.playerTwo, shots: [Shot](), winner: nil)
+            let newPoint = Point(result: .unknown, serverId: point.winnerId == 1 ? 1 : 2, shots: [Shot](), winnerId: 0)
             points.append(newPoint)
         }
     }
@@ -123,6 +134,30 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
         pointView.backgroundColor = UIColor.highlighted
         
         scoreCardDelegate?.selected(scoreCard: self, shot: pointView.tag)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return textField.text?.characters.count ?? 1 > 0
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let name = textField.text
+        game.points = points
+        
+        if textField == firstNameTextField {
+            game.playerOne = Player(id: 1, name: name ?? "Player One")
+            textField.text = game.playerOne.name
+        } else if textField == secondNameTextField {
+            game.playerTwo = Player(id: 2, name: name ?? "Player Two")
+            textField.text = game.playerTwo.name
+        }
+        
+        setNeedsLayout()
+        
+        UIView.animate(withDuration: 0.25) { 
+            self.layoutIfNeeded()
+        }
     }
 }
 

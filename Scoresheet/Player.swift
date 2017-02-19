@@ -7,9 +7,10 @@
 //
 
 struct Player: Equatable {
-    var name: String
+    var id: Int
+    var name: String?
 }
 
 func ==(lhs: Player, rhs: Player) -> Bool {
-    return lhs.name == rhs.name
+    return lhs.id == rhs.id
 }

@@ -23,8 +23,8 @@ struct Game {
             let playerTwo = data["playerTwo"] as? String,
             let points = data["points"] as? [[String: Any]] {
             
-            self.playerOne = Player(name: playerOne)
-            self.playerTwo = Player(name: playerTwo)
+            self.playerOne = Player(id: 1, name: playerOne)
+            self.playerTwo = Player(id: 2, name: playerTwo)
             
             self.points = [Point]()
             
@@ -38,6 +38,13 @@ struct Game {
         } else {
             return nil
         }
+    }
+    
+    init() {
+        self.id = UUID().uuidString
+        self.playerOne = Player(id: 1, name: "Player One")
+        self.playerTwo = Player(id: 2, name: "Player Two")
+        self.points = [Point()]
     }
     
     init(playerOne: Player, playerTwo: Player, points: [Point]) {
@@ -55,8 +62,8 @@ struct Game {
         }
         
         let data = [
-            "playerOne": playerOne.name,
-            "playerTwo": playerTwo.name,
+            "playerOne": playerOne.name ?? "Player One",
+            "playerTwo": playerTwo.name ?? "Player Two",
             "points": pointsData
         ] as NSDictionary
         
