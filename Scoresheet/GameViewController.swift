@@ -10,6 +10,9 @@ import UIKit
 
 class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputViewDelegate, ResultSelectorViewDelegate {
     
+    @IBOutlet weak var topBar: UIView!
+    @IBOutlet weak var backButton: UIButton!
+    
     @IBOutlet weak var scoreCard: ScoreCardView!
     @IBOutlet weak var courtView: CourtInputView!
     @IBOutlet weak var resultSelector: ResultSelectorView!
@@ -36,6 +39,9 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backButton.setImage(backButton.image(for: .normal)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        backButton.tintColor = .white
         
         if game == nil {
             let p1 = Player(name: "Carolina Marin")

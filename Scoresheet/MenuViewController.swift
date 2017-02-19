@@ -28,6 +28,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         reloadGames()
         
+        newButton.setImage(newButton.image(for: .normal)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        newButton.tintColor = .white
+        
         tableView.backgroundColor = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
         tableView.dataSource = self
         tableView.delegate = self
