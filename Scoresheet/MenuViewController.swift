@@ -11,6 +11,7 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var topBar: UIView!
+    @IBOutlet weak var newButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     private var topBarBottomBorder: CALayer!
@@ -37,6 +38,14 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             topBar.layer.addSublayer(topBarBottomBorder)
         }
         topBarBottomBorder.frame = CGRect(x: 0, y: topBar.frame.size.height - 1, width: topBar.frame.size.width, height: 1)
+    }
+    
+    @IBAction func newButtonPressed(sender: UIButton) {
+        performSegue(withIdentifier: "gameSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,5 +87,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "gameSegue", sender: self)
     }
 }

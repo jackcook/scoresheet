@@ -6,8 +6,8 @@
 //  Copyright © 2017 Jack Cook. All rights reserved.
 //
 
-enum PointResult {
-    case couldntReach
+enum PointResult: Int {
+    case couldntReach = 0
     case hitNet
     case hitOut
     case leftIn
