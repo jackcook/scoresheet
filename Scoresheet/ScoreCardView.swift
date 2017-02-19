@@ -25,9 +25,9 @@ class ScoreCardView: UIScrollView, PointViewDelegate, UITextFieldDelegate {
                 let pointView = PointView()
                 pointView.delegate = self
                 
-                if point.winnerId == 1 {
+                if point.winner == .first {
                     pointView.pointViewState = .topWinner
-                } else if point.winnerId == 2 {
+                } else if point.winner == .second {
                     pointView.pointViewState = .bottomWinner
                 } else {
                     pointView.pointViewState = .noWinner
@@ -115,7 +115,8 @@ class ScoreCardView: UIScrollView, PointViewDelegate, UITextFieldDelegate {
         points[selectedIndex] = point
         
         if selectedIndex == pointViews.count - 1 {
-            let newPoint = Point(result: .unknown, serverId: point.winnerId == 1 ? 1 : 2, shots: [Shot](), winnerId: 0)
+            var newPoint = Point()
+            newPoint.server = point.winner == .first ? .first : .second
             points.append(newPoint)
         }
     }

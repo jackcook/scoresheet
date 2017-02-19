@@ -23,8 +23,8 @@ struct Game {
             let playerTwo = data["playerTwo"] as? String,
             let points = data["points"] as? [[String: Any]] {
             
-            self.playerOne = Player(id: 1, name: playerOne)
-            self.playerTwo = Player(id: 2, name: playerTwo)
+            self.playerOne = Player(position: .first, name: playerOne)
+            self.playerTwo = Player(position: .second, name: playerTwo)
             
             self.points = [Point]()
             
@@ -42,8 +42,8 @@ struct Game {
     
     init() {
         self.id = UUID().uuidString
-        self.playerOne = Player(id: 1, name: "Player One")
-        self.playerTwo = Player(id: 2, name: "Player Two")
+        self.playerOne = Player(position: .first, name: "Player One")
+        self.playerTwo = Player(position: .second, name: "Player Two")
         self.points = [Point()]
     }
     

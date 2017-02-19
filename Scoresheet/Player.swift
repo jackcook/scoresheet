@@ -7,10 +7,14 @@
 //
 
 struct Player: Equatable {
-    var id: Int
+    var position: PlayerPosition
     var name: String?
 }
 
+enum PlayerPosition: Int {
+    case unknown = 0, first, second
+}
+
 func ==(lhs: Player, rhs: Player) -> Bool {
-    return lhs.id == rhs.id
+    return lhs.position == rhs.position
 }

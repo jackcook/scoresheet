@@ -74,27 +74,27 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
     @IBAction func playerOneServeToggled(_ sender: UISwitch) {
         playerTwoServeSwitch.setOn(!playerOneServeSwitch.isOn, animated: true)
         
-        game.points[scoreCard.selectedIndex].serverId = playerOneServeSwitch.isOn ? 1 : 2
+        game.points[scoreCard.selectedIndex].server = playerOneServeSwitch.isOn ? .first : .second
     }
     
     @IBAction func playerTwoServeToggled(_ sender: UISwitch) {
         playerOneServeSwitch.setOn(!playerTwoServeSwitch.isOn, animated: true)
         
-        game.points[scoreCard.selectedIndex].serverId = playerTwoServeSwitch.isOn ? 2 : 1
+        game.points[scoreCard.selectedIndex].server = playerTwoServeSwitch.isOn ? .second : .first
     }
     
     @IBAction func playerOneWinToggled(_ sender: UISwitch) {
         if sender.isOn {
             playerTwoWinSwitch.setOn(false, animated: true)
             
-            if scoreCard.selectedIndex == game.points.count - 1 && currentPoint.winnerId == 0 {
-                let point = Point(result: .unknown, serverId: 1, shots: [Shot](), winnerId: 0)
+            if scoreCard.selectedIndex == game.points.count - 1 && currentPoint.winner == .unknown {
+                let point = Point()
                 game.points.append(point)
             }
             
-            game.points[scoreCard.selectedIndex].winnerId = 1
+            game.points[scoreCard.selectedIndex].winner = .first
         } else {
-            game.points[scoreCard.selectedIndex].winnerId = 0
+            game.points[scoreCard.selectedIndex].winner = .unknown
         }
         
         scoreCard.updatePoint(point: currentPoint)
@@ -104,24 +104,24 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
         if sender.isOn {
             playerOneWinSwitch.setOn(false, animated: true)
             
-            if scoreCard.selectedIndex == game.points.count - 1 && currentPoint.winnerId == 0 {
-                let point = Point(result: .unknown, serverId: 2, shots: [Shot](), winnerId: 0)
+            if scoreCard.selectedIndex == game.points.count - 1 && currentPoint.winner == .unknown {
+                let point = Point(result: .unknown, server: .second, shots: [Shot](), winner: .unknown)
                 game.points.append(point)
             }
             
-            game.points[scoreCard.selectedIndex].winnerId = 2
+            game.points[scoreCard.selectedIndex].winner = .second
         } else {
-            game.points[scoreCard.selectedIndex].winnerId = 0
+            game.points[scoreCard.selectedIndex].winner = .unknown
         }
         
         scoreCard.updatePoint(point: currentPoint)
     }
     
     func selectedPoint(scoreCard: ScoreCardView, point: Int) {
-        playerOneServeSwitch.setOn(currentPoint.serverId == 1, animated: false)
-        playerTwoServeSwitch.setOn(currentPoint.serverId == 2, animated: false)
-        playerOneWinSwitch.setOn(currentPoint.winnerId == 1, animated: false)
-        playerTwoWinSwitch.setOn(currentPoint.winnerId == 2, animated: false)
+        playerOneServeSwitch.setOn(currentPoint.server == .first, animated: false)
+        playerTwoServeSwitch.setOn(currentPoint.server == .second, animated: false)
+        playerOneWinSwitch.setOn(currentPoint.winner == .first, animated: false)
+        playerTwoWinSwitch.setOn(currentPoint.winner == .second, animated: false)
         
         courtView.update(game.points[point].shots)
         resultSelector.update(game.points[point])
