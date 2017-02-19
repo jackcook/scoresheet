@@ -100,6 +100,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
+        
+        let dummyView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        tableView.tableHeaderView = dummyView
+        tableView.contentInset = UIEdgeInsets(top: -40, left: 0, bottom: 0, right: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {

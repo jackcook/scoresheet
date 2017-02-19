@@ -62,7 +62,6 @@ struct Game {
         
         let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let path = "\(documentsDirectory)/\(id).game"
-        print(path)
         
         data.write(toFile: path, atomically: true)
     }
