@@ -15,6 +15,71 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     
     private var games = [(Game, Date)]()
+    
+    private var dateSortedGames: [(String, [Game])] {
+        let today = games.filter { game, date -> Bool in
+            Calendar.current.dateComponents([.day], from: date) == Calendar.current.dateComponents([.day], from: Date())
+        }
+        
+        var todayGames = [Game]()
+        
+        for (game, _) in today {
+            todayGames.append(game)
+        }
+        
+        let thisWeek = games.filter { game, date -> Bool in
+            return Date().timeIntervalSince1970 - date.timeIntervalSince1970 < 7 * 24 * 60 * 60
+                && Calendar.current.dateComponents([.day], from: date) != Calendar.current.dateComponents([.day], from: Date())
+        }
+        
+        var thisWeekGames = [Game]()
+        
+        for (game, _) in thisWeek {
+            thisWeekGames.append(game)
+        }
+        
+        let thisMonth = games.filter { game, date -> Bool in
+            return Date().timeIntervalSince1970 - date.timeIntervalSince1970 < 30 * 24 * 60 * 60
+                && Date().timeIntervalSince1970 - date.timeIntervalSince1970 > 7 * 24 * 60 * 60
+        }
+        
+        var thisMonthGames = [Game]()
+        
+        for (game, _) in thisMonth {
+            thisMonthGames.append(game)
+        }
+        
+        let distantPast = games.filter { game, date -> Bool in
+            return Date().timeIntervalSince1970 - date.timeIntervalSince1970 > 30 * 24 * 60 * 60
+        }
+        
+        var distantPastGames = [Game]()
+        
+        for (game, _) in distantPast {
+            distantPastGames.append(game)
+        }
+        
+        var sortedGames = [(String, [Game])]()
+        
+        if todayGames.count > 0 {
+            sortedGames.append(("Today", todayGames))
+        }
+        
+        if thisWeekGames.count > 0 {
+            sortedGames.append(("This week", thisWeekGames))
+        }
+        
+        if thisMonthGames.count > 0 {
+            sortedGames.append(("This month", thisMonthGames))
+        }
+        
+        if distantPastGames.count > 0 {
+            sortedGames.append(("Distant past", distantPastGames))
+        }
+        
+        return sortedGames
+    }
+    
     private var topBarBottomBorder: CALayer!
     
     private var gameToSend: Game?
@@ -88,11 +153,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return dateSortedGames.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return games.count
+        return dateSortedGames[section].1.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,6 +178,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = Bundle.main.loadNibNamed("MenuHeaderView", owner: self, options: nil)![0] as! MenuHeaderView
+        header.titleLabel.text = dateSortedGames[section].0
         return header
     }
     

@@ -10,5 +10,5 @@ import UIKit
 
 class MenuHeaderView: UIView {
     
-    
+    @IBOutlet weak var titleLabel: UILabel!
 }
