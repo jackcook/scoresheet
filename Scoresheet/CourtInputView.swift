@@ -12,25 +12,7 @@ class CourtInputView: UIView {
     
     var delegate: CourtInputViewDelegate?
     
-    var shots = [Shot]() {
-        didSet {
-            for shot in shotViews {
-                shot.removeFromSuperview()
-            }
-            
-            shotViews = [CourtShotView]()
-            
-            for (idx, shot) in shots.enumerated() {
-                let shotView = CourtShotView()
-                shotView.frame = CGRect(x: (CGFloat(shot.x) * bounds.width) - 6, y: (CGFloat(shot.y) * bounds.height) - 6, width: 12, height: 12)
-                shotView.tag = idx
-                
-                addSubview(shotView)
-                shotViews.append(shotView)
-            }
-        }
-    }
-    
+    private var shots = [Shot]()
     private var shotViews = [CourtShotView]()
     
     private var backLeft1: UIView!
@@ -204,6 +186,25 @@ class CourtInputView: UIView {
             let shot = shots[shotView.tag]
             shotView.frame = CGRect(x: (CGFloat(shot.x) * bounds.width) - 6, y: (CGFloat(shot.y) * bounds.height) - 6, width: 12, height: 12)
             bringSubview(toFront: shotView)
+        }
+    }
+    
+    func update(_ shots: [Shot]) {
+        self.shots = shots
+        
+        for shot in shotViews {
+            shot.removeFromSuperview()
+        }
+        
+        shotViews = [CourtShotView]()
+        
+        for (idx, shot) in shots.enumerated() {
+            let shotView = CourtShotView()
+            shotView.frame = CGRect(x: (CGFloat(shot.x) * bounds.width) - 6, y: (CGFloat(shot.y) * bounds.height) - 6, width: 12, height: 12)
+            shotView.tag = idx
+            
+            addSubview(shotView)
+            shotViews.append(shotView)
         }
     }
     

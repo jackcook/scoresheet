@@ -152,7 +152,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let gvc = segue.destination as? GameViewController {
-            gvc.game = gameToSend
+            gvc.game = gameToSend ?? Game()
         }
     }
     

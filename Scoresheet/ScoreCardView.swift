@@ -10,16 +10,6 @@ import UIKit
 
 class ScoreCardView: UIScrollView, PointViewDelegate, UITextFieldDelegate {
     
-    var game: Game! {
-        didSet {
-            firstNameTextField.text = game.playerOne.name
-            secondNameTextField.text = game.playerTwo.name
-            points = game.points
-            
-            pointViews[0].tapped()
-        }
-    }
-    
     var scoreCardDelegate: ScoreCardViewDelegate?
     var selectedIndex = 0
     
@@ -71,14 +61,14 @@ class ScoreCardView: UIScrollView, PointViewDelegate, UITextFieldDelegate {
         firstNameTextField.delegate = self
         firstNameTextField.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
         firstNameTextField.returnKeyType = .done
-        firstNameTextField.text = "Player 1"
+        firstNameTextField.text = "Player One"
         addSubview(firstNameTextField)
         
         secondNameTextField = UITextField()
         secondNameTextField.delegate = self
         secondNameTextField.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
         secondNameTextField.returnKeyType = .done
-        secondNameTextField.text = "Player 2"
+        secondNameTextField.text = "Player Two"
         addSubview(secondNameTextField)
         
         middleBorder = CALayer()
@@ -115,6 +105,12 @@ class ScoreCardView: UIScrollView, PointViewDelegate, UITextFieldDelegate {
         return true
     }
     
+    func update(_ game: Game) {
+        firstNameTextField.text = game.playerOne.name
+        secondNameTextField.text = game.playerTwo.name
+        points = game.points
+    }
+    
     func updatePoint(point: Point) {
         points[selectedIndex] = point
         
@@ -133,7 +129,7 @@ class ScoreCardView: UIScrollView, PointViewDelegate, UITextFieldDelegate {
         
         pointView.backgroundColor = UIColor.highlighted
         
-        scoreCardDelegate?.selected(scoreCard: self, shot: pointView.tag)
+        scoreCardDelegate?.selectedPoint(scoreCard: self, point: pointView.tag)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -142,15 +138,10 @@ class ScoreCardView: UIScrollView, PointViewDelegate, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let name = textField.text
-        game.points = points
-        
         if textField == firstNameTextField {
-            game.playerOne = Player(id: 1, name: name ?? "Player One")
-            textField.text = game.playerOne.name
+            scoreCardDelegate?.updatedName(playerId: 1, name: textField.text ?? "Player One")
         } else if textField == secondNameTextField {
-            game.playerTwo = Player(id: 2, name: name ?? "Player Two")
-            textField.text = game.playerTwo.name
+            scoreCardDelegate?.updatedName(playerId: 2, name: textField.text ?? "Player Two")
         }
         
         setNeedsLayout()
@@ -162,5 +153,6 @@ class ScoreCardView: UIScrollView, PointViewDelegate, UITextFieldDelegate {
 }
 
 protocol ScoreCardViewDelegate {
-    func selected(scoreCard: ScoreCardView, shot: Int)
+    func selectedPoint(scoreCard: ScoreCardView, point: Int)
+    func updatedName(playerId: Int, name: String)
 }

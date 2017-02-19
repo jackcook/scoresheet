@@ -12,6 +12,7 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
     
     @IBOutlet weak var topBar: UIView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var scoreCard: ScoreCardView!
     @IBOutlet weak var courtView: CourtInputView!
@@ -43,25 +44,21 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
         backButton.setImage(backButton.image(for: .normal)?.withRenderingMode(.alwaysTemplate), for: .normal)
         backButton.tintColor = .white
         
-        if game == nil {
-            game = Game()
-        }
-        
-        scoreCard.game = game
         scoreCard.scoreCardDelegate = self
+        scoreCard.update(game)
         
         courtView.delegate = self
-        courtView.shots = game.points[0].shots
+        courtView.update(game.points[0].shots)
         
         resultSelector.delegate = self
-        resultSelector.load(point: game.points[0])
+        resultSelector.update(game.points[0])
         
         playerOneServeLabel.text = game.playerOne.name
         playerTwoServeLabel.text = game.playerTwo.name
         playerOneWinLabel.text = game.playerOne.name
         playerTwoWinLabel.text = game.playerTwo.name
         
-        navigationItem.title = "\(game.playerOne.name) vs. \(game.playerTwo.name)"
+        titleLabel.text = "\(game.playerOne.name ?? "Player One") vs. \(game.playerTwo.name ?? "Player Two")"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -71,7 +68,7 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
     @IBAction func backButtonPressed(sender: UIButton) {
         let _ = navigationController?.popViewController(animated: true)
         
-        scoreCard.game.save()
+        game.save()
     }
     
     @IBAction func playerOneServeToggled(_ sender: UISwitch) {
@@ -120,19 +117,33 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
         scoreCard.updatePoint(point: currentPoint)
     }
     
-    func selected(scoreCard: ScoreCardView, shot: Int) {
+    func selectedPoint(scoreCard: ScoreCardView, point: Int) {
         playerOneServeSwitch.setOn(currentPoint.serverId == 1, animated: false)
         playerTwoServeSwitch.setOn(currentPoint.serverId == 2, animated: false)
         playerOneWinSwitch.setOn(currentPoint.winnerId == 1, animated: false)
         playerTwoWinSwitch.setOn(currentPoint.winnerId == 2, animated: false)
         
-        courtView.shots = game.points[shot].shots
-        resultSelector.load(point: game.points[shot])
+        courtView.update(game.points[point].shots)
+        resultSelector.update(game.points[point])
+    }
+    
+    func updatedName(playerId: Int, name: String) {
+        if playerId == 1 {
+            game.playerOne.name = name
+            playerOneServeLabel.text = name
+            playerOneWinLabel.text = name
+        } else if playerId == 2 {
+            game.playerTwo.name = name
+            playerTwoServeLabel.text = name
+            playerTwoWinLabel.text = name
+        }
+        
+        titleLabel.text = "\(game.playerOne.name ?? "Player One") vs. \(game.playerTwo.name ?? "Player Two")"
     }
     
     func recordedShot(shot: Shot) {
         game.points[scoreCard.selectedIndex].shots.append(shot)
-        courtView.shots = currentPoint.shots
+        courtView.update(currentPoint.shots)
     }
     
     func resultSelector(_ selectorView: ResultSelectorView, selectedResult result: PointResult) {

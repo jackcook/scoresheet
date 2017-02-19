@@ -64,7 +64,7 @@ class ResultSelectorView: UIView {
         leftInButton.frame = CGRect(x: w, y: h, width: w, height: h)
     }
     
-    func load(point: Point) {
+    func update(_ point: Point) {
         couldntReachButton.backgroundColor = point.result == PointResult.couldntReach ? .highlighted : .white
         hitNetButton.backgroundColor = point.result == PointResult.hitNet ? .highlighted : .white
         hitOutButton.backgroundColor = point.result == PointResult.hitOut ? .highlighted : .white

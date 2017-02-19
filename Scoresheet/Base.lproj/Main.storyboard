@@ -185,13 +185,21 @@
                                             <action selector="backButtonPressedWithSender:" destination="kea-Nt-njF" eventType="touchUpInside" id="U6S-SV-vHy"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player One vs. Player Two" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ft-3W-jIh">
+                                        <rect key="frame" x="252.5" y="37" width="264" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="1f6-9z-nzC"/>
                                     <constraint firstItem="52S-eC-o5F" firstAttribute="leading" secondItem="Xio-bi-KIJ" secondAttribute="leading" constant="12" id="BqY-VT-F08"/>
                                     <constraint firstItem="52S-eC-o5F" firstAttribute="top" secondItem="Xio-bi-KIJ" secondAttribute="top" constant="20" id="STI-Lx-qEc"/>
+                                    <constraint firstItem="5ft-3W-jIh" firstAttribute="centerY" secondItem="Xio-bi-KIJ" secondAttribute="centerY" constant="8" id="cxu-ZD-CQ1"/>
                                     <constraint firstAttribute="bottom" secondItem="52S-eC-o5F" secondAttribute="bottom" id="jIi-hD-mNU"/>
+                                    <constraint firstItem="5ft-3W-jIh" firstAttribute="centerX" secondItem="Xio-bi-KIJ" secondAttribute="centerX" id="n4f-kW-F2G"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -246,6 +254,7 @@
                         <outlet property="playerTwoWinSwitch" destination="RKN-t1-9Hx" id="srA-ts-JoB"/>
                         <outlet property="resultSelector" destination="p7N-FR-qFh" id="e5f-Rb-ftg"/>
                         <outlet property="scoreCard" destination="SBH-f4-izg" id="Vnt-af-7jV"/>
+                        <outlet property="titleLabel" destination="5ft-3W-jIh" id="9dW-Dy-tKU"/>
                         <outlet property="topBar" destination="Xio-bi-KIJ" id="LzG-u8-2Ab"/>
                     </connections>
                 </viewController>
