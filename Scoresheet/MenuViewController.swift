@@ -1,4 +1,4 @@
-//
+    //
 //  MenuViewController.swift
 //  Scoresheet
 //
@@ -14,7 +14,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var newButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    private var games = [(Game, Date)]()
     private var topBarBottomBorder: CALayer!
+    
+    private var gameToSend: Game?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -23,10 +26,20 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        reloadGames()
+        
         tableView.backgroundColor = UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        reloadGames()
+        
+        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,20 +53,43 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         topBarBottomBorder.frame = CGRect(x: 0, y: topBar.frame.size.height - 1, width: topBar.frame.size.width, height: 1)
     }
     
+    private func reloadGames() {
+        games = [(Game, Date)]()
+        
+        let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        
+        do {
+            let files = try FileManager.default.contentsOfDirectory(atPath: documentsDirectory)
+            
+            for file in files {
+                let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+                let filePath = "\(documentsDirectory)/\(file)"
+                
+                if let game = Game(filePath: filePath),
+                    let date = try FileManager.default.attributesOfItem(atPath: filePath)[.modificationDate] as? Date {
+                    
+                    games.append((game, date))
+                }
+            }
+        } catch {}
+    }
+    
     @IBAction func newButtonPressed(sender: UIButton) {
         performSegue(withIdentifier: "gameSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if let gvc = segue.destination as? GameViewController {
+            gvc.game = gameToSend
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return games.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,6 +123,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        gameToSend = games[indexPath.row].0
         performSegue(withIdentifier: "gameSegue", sender: self)
     }
 }

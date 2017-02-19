@@ -14,10 +14,12 @@ class PointView: UIButton {
     
     var pointViewState = PointViewState.noWinner {
         didSet {
-            markerLabel.isHidden = pointViewState == .noWinner
-            
-            setNeedsLayout()
-            layoutIfNeeded()
+            if let _ = markerLabel {
+                markerLabel.isHidden = pointViewState == .noWinner
+                
+                setNeedsLayout()
+                layoutIfNeeded()
+            }
         }
     }
     
@@ -47,7 +49,7 @@ class PointView: UIButton {
         if markerLabel == nil {
             markerLabel = UILabel()
             markerLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium)
-            markerLabel.isHidden = true
+            markerLabel.isHidden = pointViewState == .noWinner
             markerLabel.text = "X"
             markerLabel.textColor = UIColor(white: 0.5, alpha: 1)
             addSubview(markerLabel)

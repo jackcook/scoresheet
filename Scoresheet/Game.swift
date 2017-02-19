@@ -10,13 +10,15 @@ import Foundation
 
 struct Game {
     
+    var id: String
     var playerOne: Player
     var playerTwo: Player
     var points: [Point]
     
-    init?(fileName: String) {
-        if let path = Bundle.main.path(forResource: fileName, ofType: "game"),
-            let data = NSDictionary(contentsOfFile: path),
+    init?(filePath: String) {
+        id = NSString(string: NSString(string: filePath).lastPathComponent).deletingPathExtension
+        
+        if let data = NSDictionary(contentsOfFile: filePath),
             let playerOne = data["playerOne"] as? String,
             let playerTwo = data["playerTwo"] as? String,
             let points = data["points"] as? [[String: Any]] {
@@ -39,6 +41,7 @@ struct Game {
     }
     
     init(playerOne: Player, playerTwo: Player, points: [Point]) {
+        self.id = UUID().uuidString
         self.playerOne = playerOne
         self.playerTwo = playerTwo
         self.points = points
@@ -57,8 +60,8 @@ struct Game {
             "points": pointsData
         ] as NSDictionary
         
-        let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let path = "\(documentsDirectory)\(UUID().uuidString).game"
+        let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let path = "\(documentsDirectory)/\(id).game"
         print(path)
         
         data.write(toFile: path, atomically: true)

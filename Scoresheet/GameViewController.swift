@@ -24,25 +24,34 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
     @IBOutlet weak var playerTwoWinSwitch: UISwitch!
     @IBOutlet weak var playerTwoWinLabel: UILabel!
     
-    private var game: Game!
+    var game: Game!
     
     private var currentPoint: Point {
         return game.points[scoreCard.selectedIndex]
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let p1 = Player(name: "Carolina Marin")
-        let p2 = Player(name: "Tai Tzu-ying")
-        let firstPoint = Point(result: .unknown, server: nil, shots: [Shot](), winner: nil)
-        game = Game(playerOne: p1, playerTwo: p2, points: [firstPoint])
+        if game == nil {
+            let p1 = Player(name: "Carolina Marin")
+            let p2 = Player(name: "Tai Tzu-ying")
+            let firstPoint = Point(result: .unknown, server: nil, shots: [Shot](), winner: nil)
+            game = Game(playerOne: p1, playerTwo: p2, points: [firstPoint])
+        }
         
         scoreCard.game = game
         scoreCard.scoreCardDelegate = self
         
         courtView.delegate = self
+        courtView.shots = game.points[0].shots
+        
         resultSelector.delegate = self
+        resultSelector.load(point: game.points[0])
         
         playerOneServeLabel.text = game.playerOne.name
         playerTwoServeLabel.text = game.playerTwo.name
@@ -50,6 +59,12 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
         playerTwoWinLabel.text = game.playerTwo.name
         
         navigationItem.title = "\(game.playerOne.name) vs. \(game.playerTwo.name)"
+    }
+    
+    @IBAction func backButtonPressed(sender: UIButton) {
+        let _ = navigationController?.popViewController(animated: true)
+        
+        game.save()
     }
     
     @IBAction func playerOneServeToggled(_ sender: UISwitch) {

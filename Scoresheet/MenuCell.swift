@@ -44,7 +44,7 @@ class MenuCell: UITableViewCell {
         containerView.layer.shadowRadius = 2
         containerView.layer.shadowPath = shadowPath.cgPath
         
-        if maskCorners.isEmpty || maskCorners.contains(.topLeft) {
+        if maskCorners.isEmpty || (maskCorners.contains(.topLeft) && !maskCorners.contains(.bottomLeft)) {
             let shadowMaskPath = UIBezierPath(rect: CGRect(x: -4, y: -4, width: containerView.bounds.width + 8, height: containerView.bounds.height + 4))
             otherMaskLayer = CAShapeLayer()
             otherMaskLayer?.frame = containerView.bounds

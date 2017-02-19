@@ -20,9 +20,10 @@ class CourtInputView: UIView {
             
             shotViews = [CourtShotView]()
             
-            for shot in shots {
+            for (idx, shot) in shots.enumerated() {
                 let shotView = CourtShotView()
                 shotView.frame = CGRect(x: (CGFloat(shot.x) * bounds.width) - 6, y: (CGFloat(shot.y) * bounds.height) - 6, width: 12, height: 12)
+                shotView.tag = idx
                 
                 addSubview(shotView)
                 shotViews.append(shotView)
@@ -198,6 +199,12 @@ class CourtInputView: UIView {
             addSubview(netView)
         }
         netView.frame = CGRect(x: 3, y: (bounds.height - 4) / 2, width: court.width, height: 4)
+        
+        for shotView in shotViews {
+            let shot = shots[shotView.tag]
+            shotView.frame = CGRect(x: (CGFloat(shot.x) * bounds.width) - 6, y: (CGFloat(shot.y) * bounds.height) - 6, width: 12, height: 12)
+            bringSubview(toFront: shotView)
+        }
     }
     
     func tapped(gestureRecognizer: UITapGestureRecognizer) {

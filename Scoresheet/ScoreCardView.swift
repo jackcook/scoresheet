@@ -14,15 +14,51 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
         didSet {
             firstNameLabel.text = game.playerOne.name
             secondNameLabel.text = game.playerTwo.name
+            points = game.points
+            
+            pointViews[0].tapped()
         }
     }
     
     var scoreCardDelegate: ScoreCardViewDelegate?
     var selectedIndex = 0
     
+    private var points = [Point]() {
+        didSet {
+            for pointView in pointViews {
+                pointView.removeFromSuperview()
+            }
+            
+            pointViews = [PointView]()
+            
+            for (idx, point) in points.enumerated() {
+                let pointView = PointView()
+                pointView.delegate = self
+                
+                if point.winner == game.playerOne {
+                    pointView.pointViewState = .topWinner
+                } else if point.winner == game.playerTwo {
+                    pointView.pointViewState = .bottomWinner
+                } else {
+                    pointView.pointViewState = .noWinner
+                }
+                
+                pointView.tag = idx
+                
+                insertSubview(pointView, at: 0)
+                pointViews.append(pointView)
+            }
+            
+            pointViews[selectedIndex].tapped()
+            
+            setNeedsLayout()
+            layoutIfNeeded()
+        }
+    }
+    
     private var firstNameLabel: UILabel!
     private var secondNameLabel: UILabel!
-    private var pointViews: [PointView]!
+    private var pointViews = [PointView]()
     private var middleBorder: CALayer!
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,16 +76,6 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
         secondNameLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightMedium)
         secondNameLabel.text = "Player 2"
         addSubview(secondNameLabel)
-        
-        pointViews = [PointView]()
-        
-        let firstPointView = PointView()
-        firstPointView.delegate = self
-        firstPointView.tag = 0
-        firstPointView.tapped()
-        
-        addSubview(firstPointView)
-        pointViews.append(firstPointView)
         
         middleBorder = CALayer()
         middleBorder.backgroundColor = UIColor.border.cgColor
@@ -79,24 +105,11 @@ class ScoreCardView: UIScrollView, PointViewDelegate {
     }
     
     func updatePoint(point: Point) {
-        if point.winner == game.playerOne {
-            pointViews[selectedIndex].pointViewState = .topWinner
-        } else if point.winner == game.playerTwo {
-            pointViews[selectedIndex].pointViewState = .bottomWinner
-        } else {
-            pointViews[selectedIndex].pointViewState = .noWinner
-        }
+        points[selectedIndex] = point
         
         if selectedIndex == pointViews.count - 1 {
-            let nextPointView = PointView()
-            nextPointView.delegate = self
-            nextPointView.tag = pointViews.count
-            
-            insertSubview(nextPointView, at: 0)
-            pointViews.append(nextPointView)
-            
-            setNeedsLayout()
-            layoutIfNeeded()
+            let newPoint = Point(result: .unknown, server: point.winner == game.playerOne ? game.playerOne : game.playerTwo, shots: [Shot](), winner: nil)
+            points.append(newPoint)
         }
     }
     
