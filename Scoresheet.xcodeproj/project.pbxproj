@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		753F2F871E5A550800C431B0 /* UIView+ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753F2F861E5A550800C431B0 /* UIView+ViewController.swift */; };
 		75966A9A1E58D2CE00953134 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75966A991E58D2CE00953134 /* MenuViewController.swift */; };
 		75966A9C1E58DF5900953134 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75966A9B1E58DF5900953134 /* MenuHeaderView.swift */; };
 		75966A9E1E58DFC600953134 /* MenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75966A9D1E58DFC600953134 /* MenuHeaderView.xib */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		753F2F861E5A550800C431B0 /* UIView+ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ViewController.swift"; sourceTree = "<group>"; };
 		75966A991E58D2CE00953134 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		75966A9B1E58DF5900953134 /* MenuHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
 		75966A9D1E58DFC600953134 /* MenuHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuHeaderView.xib; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				EBD1FF891E48F565002C766A /* UIColor+Scoresheet.swift */,
+				753F2F861E5A550800C431B0 /* UIView+ViewController.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				EB7B4E1F1E462517009CF589 /* GameViewController.swift in Sources */,
 				75966A9C1E58DF5900953134 /* MenuHeaderView.swift in Sources */,
 				75966AA21E58E0E300953134 /* MenuCell.swift in Sources */,
+				753F2F871E5A550800C431B0 /* UIView+ViewController.swift in Sources */,
 				EBD1FF861E48F1A2002C766A /* PointResult.swift in Sources */,
 				EB394DBA1E45A6FB0000F7AB /* AppDelegate.swift in Sources */,
 				EBD1FF7E1E48E591002C766A /* ResultSelectorView.swift in Sources */,

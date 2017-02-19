@@ -17,7 +17,10 @@ class MenuCell: UITableViewCell {
     @IBOutlet weak var playerOneScoreLabel: UILabel!
     @IBOutlet weak var playerTwoScoreLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var separatorView: UIView!
+    
+    private var game: Game!
     
     private var maskCorners = UIRectCorner(rawValue: 0)
     private var maskLayer: CAShapeLayer?
@@ -58,9 +61,14 @@ class MenuCell: UITableViewCell {
         if maskCorners.contains(.bottomLeft) {
             separatorView.alpha = 0
         }
+        
+        moreButton.setImage(moreButton.image(for: .normal)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        moreButton.tintColor = UIColor(white: 0.25, alpha: 1)
     }
     
     func configure(_ game: Game) {
+        self.game = game
+        
         playerOneLabel.text = game.playerOne.name
         playerTwoLabel.text = game.playerTwo.name
         
@@ -104,6 +112,51 @@ class MenuCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         innerView.backgroundColor = selected ? UIColor(red: 1, green: 235/255, blue: 238/255, alpha: 1) : .white
+    }
+    
+    @IBAction func moreButtonPressed(sender: UIButton) {
+        let controller = UIAlertController(title: nil, message: "What would you like to do with this game?", preferredStyle: .actionSheet)
+        
+        controller.popoverPresentationController?.permittedArrowDirections = [.up, .down]
+        controller.popoverPresentationController?.sourceRect = moreButton.frame
+        controller.popoverPresentationController?.sourceView = self
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+            let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            let filePath = "\(documentsDirectory)/\(self.game.id).game"
+            
+            do {
+                try FileManager.default.removeItem(atPath: filePath)
+            } catch {
+                print("error deleting file")
+            }
+            
+            (self.viewController as? MenuViewController)?.reloadGames()
+        }
+        
+        let shareAction = UIAlertAction(title: "Share", style: .default) { action in
+            do {
+                let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+                let gameData = try NSData(contentsOfFile: "\(documentsDirectory)/\(self.game.id).game") as Data
+                
+                let activityController = UIActivityViewController(activityItems: ["Test", gameData], applicationActivities: nil)
+                activityController.modalPresentationStyle = .popover
+                
+                self.viewController?.present(activityController, animated: true, completion: nil)
+                
+                let popoverController = activityController.popoverPresentationController
+                popoverController?.permittedArrowDirections = [.up, .down]
+                popoverController?.sourceRect = self.moreButton.frame
+                popoverController?.sourceView = self
+            } catch {
+                print("error sharing file")
+            }
+        }
+        
+        controller.addAction(deleteAction)
+        controller.addAction(shareAction)
+        
+        viewController?.present(controller, animated: true, completion: nil)
     }
 }
 

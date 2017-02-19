@@ -11,6 +11,7 @@ import UIKit
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var topBar: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var newButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
@@ -110,8 +111,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidAppear(animated)
         
         reloadGames()
-        
-        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -125,7 +124,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         topBarBottomBorder.frame = CGRect(x: 0, y: topBar.frame.size.height - 1, width: topBar.frame.size.width, height: 1)
     }
     
-    private func reloadGames() {
+    func reloadGames() {
         games = [(Game, Date)]()
         
         let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
@@ -143,6 +142,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     games.append((game, date))
                 }
             }
+            
+            tableView.reloadData()
         } catch {}
     }
     

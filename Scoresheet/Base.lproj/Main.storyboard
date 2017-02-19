@@ -33,11 +33,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9No-Yc-nT0">
-                                        <rect key="frame" x="692" y="20" width="64" height="64"/>
+                                        <rect key="frame" x="696" y="20" width="60" height="64"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="9No-Yc-nT0" secondAttribute="height" multiplier="1:1" id="bt6-Lc-UL6"/>
+                                            <constraint firstAttribute="width" secondItem="9No-Yc-nT0" secondAttribute="height" multiplier="60:64" id="bt6-Lc-UL6"/>
                                         </constraints>
-                                        <inset key="imageEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
+                                        <inset key="imageEdgeInsets" minX="8" minY="12" maxX="12" maxY="12"/>
                                         <state key="normal" image="New"/>
                                         <connections>
                                             <action selector="newButtonPressedWithSender:" destination="Q4j-oC-80g" eventType="touchUpInside" id="hgg-f1-58b"/>
@@ -74,6 +74,7 @@
                     <connections>
                         <outlet property="newButton" destination="9No-Yc-nT0" id="Tnz-EE-uaL"/>
                         <outlet property="tableView" destination="IfA-PA-Rct" id="nOI-M8-2b8"/>
+                        <outlet property="titleLabel" destination="U0C-HE-8sx" id="yzW-VX-uNm"/>
                         <outlet property="topBar" destination="HBM-pO-Amz" id="AZE-Qq-IGi"/>
                         <segue destination="kea-Nt-njF" kind="show" identifier="gameSegue" id="7vK-2L-xaE"/>
                     </connections>
