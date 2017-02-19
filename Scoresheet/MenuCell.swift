@@ -14,6 +14,9 @@ class MenuCell: UITableViewCell {
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var playerOneLabel: UILabel!
     @IBOutlet weak var playerTwoLabel: UILabel!
+    @IBOutlet weak var playerOneScoreLabel: UILabel!
+    @IBOutlet weak var playerTwoScoreLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
     
     private var maskCorners = UIRectCorner(rawValue: 0)
@@ -57,6 +60,33 @@ class MenuCell: UITableViewCell {
         }
     }
     
+    func configure(_ game: Game) {
+        playerOneLabel.text = game.playerOne.name
+        playerTwoLabel.text = game.playerTwo.name
+        
+        var playerOneScore = 0
+        var playerTwoScore = 0
+        
+        for point in game.points {
+            if point.winner == game.playerOne {
+                playerOneScore += 1
+            } else if point.winner == game.playerTwo {
+                playerTwoScore += 1
+            }
+        }
+        
+        playerOneScoreLabel.text = "\(playerOneScore)"
+        playerTwoScoreLabel.text = "\(playerTwoScore)"
+        
+        if playerOneScore > playerTwoScore {
+            playerOneLabel.font = UIFont.boldSystemFont(ofSize: 17)
+            playerOneScoreLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        } else if playerTwoScore > playerOneScore {
+            playerTwoLabel.font = UIFont.boldSystemFont(ofSize: 17)
+            playerTwoScoreLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        }
+    }
+    
     func roundCorners(_ side: Side) {
         switch side {
         case .top:
@@ -66,6 +96,14 @@ class MenuCell: UITableViewCell {
         case .both:
             maskCorners = [.topLeft, .topRight, .bottomLeft, .bottomRight]
         }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        innerView.backgroundColor = highlighted ? UIColor(red: 1, green: 235/255, blue: 238/255, alpha: 1) : .white
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        innerView.backgroundColor = selected ? UIColor(red: 1, green: 235/255, blue: 238/255, alpha: 1) : .white
     }
 }
 

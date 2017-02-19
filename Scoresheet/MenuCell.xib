@@ -21,14 +21,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bq9-RG-rlb">
                             <rect key="frame" x="0.0" y="0.0" width="369" height="107"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angela Chou" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skF-fN-6P7">
-                                    <rect key="frame" x="24" y="24.5" width="98" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player One" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skF-fN-6P7">
+                                    <rect key="frame" x="24" y="24.5" width="83" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carol Shao" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJQ-zN-AOS">
-                                    <rect key="frame" x="24" y="61.5" width="84" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Two" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJQ-zN-AOS">
+                                    <rect key="frame" x="24" y="61.5" width="83" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -110,8 +110,11 @@
                 <outlet property="containerView" destination="qWm-ZJ-XZL" id="PVD-4H-L2J"/>
                 <outlet property="innerView" destination="bq9-RG-rlb" id="eI2-ZY-3k0"/>
                 <outlet property="playerOneLabel" destination="skF-fN-6P7" id="F9U-lq-hVW"/>
+                <outlet property="playerOneScoreLabel" destination="Htw-5N-1eU" id="QXA-M9-Ev3"/>
                 <outlet property="playerTwoLabel" destination="kJQ-zN-AOS" id="KfU-H3-2df"/>
+                <outlet property="playerTwoScoreLabel" destination="mE2-C6-1rm" id="jyr-zQ-njP"/>
                 <outlet property="separatorView" destination="Gvl-Lw-U55" id="M8n-hK-VTd"/>
+                <outlet property="statusLabel" destination="ART-QM-8Xc" id="GCn-m2-H21"/>
             </connections>
             <point key="canvasLocation" x="207.5" y="-243.5"/>
         </view>

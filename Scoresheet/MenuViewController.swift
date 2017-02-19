@@ -166,6 +166,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("MenuCell", owner: self, options: nil)![0] as! MenuCell
+        cell.configure(dateSortedGames[indexPath.section].1[indexPath.row])
         
         if indexPath.row == 0 {
             if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
