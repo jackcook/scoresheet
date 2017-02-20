@@ -68,7 +68,9 @@ class GameViewController: UIViewController, ScoreCardViewDelegate, CourtInputVie
     @IBAction func backButtonPressed(sender: UIButton) {
         let _ = navigationController?.popViewController(animated: true)
         
-        game.save()
+        if game.points.count > 1 {
+            game.save()
+        }
     }
     
     @IBAction func playerOneServeToggled(_ sender: UISwitch) {
