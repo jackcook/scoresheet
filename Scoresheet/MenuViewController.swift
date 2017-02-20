@@ -18,83 +18,53 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var games = [(Game, Date)]()
     
     private var dateSortedGames: [(String, [Game])] {
-        let today = games.filter { game, date -> Bool in
+        let today = games.filter({ game, date -> Bool in
             return Calendar.current.dateComponents([.day], from: date) == Calendar.current.dateComponents([.day], from: Date())
-        }
+        }).map { $0.0 }
         
-        var todayGames = [Game]()
-        
-        for (game, _) in today {
-            todayGames.append(game)
-        }
-        
-        let yesterday = games.filter { game, date -> Bool in
+        let yesterday = games.filter({ game, date -> Bool in
             if let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
                 return Calendar.current.dateComponents([.day], from: date) == Calendar.current.dateComponents([.day], from: yesterday)
             }
             
             return false
-        }
+        }).map { $0.0 }
         
-        var yesterdayGames = [Game]()
-        
-        for (game, _) in yesterday {
-            yesterdayGames.append(game)
-        }
-        
-        let thisWeek = games.filter { game, date -> Bool in
+        let thisWeek = games.filter({ game, date -> Bool in
             return Date().timeIntervalSince1970 - date.timeIntervalSince1970 < 7 * 24 * 60 * 60
-                && !todayGames.contains { $0 == game }
-                && !yesterdayGames.contains { $0 == game }
-        }
+                && !today.contains { $0 == game }
+                && !yesterday.contains { $0 == game }
+        }).map { $0.0 }
         
-        var thisWeekGames = [Game]()
-        
-        for (game, _) in thisWeek {
-            thisWeekGames.append(game)
-        }
-        
-        let thisMonth = games.filter { game, date -> Bool in
+        let thisMonth = games.filter({ game, date -> Bool in
             return Date().timeIntervalSince1970 - date.timeIntervalSince1970 < 30 * 24 * 60 * 60
                 && Date().timeIntervalSince1970 - date.timeIntervalSince1970 > 7 * 24 * 60 * 60
-        }
+        }).map { $0.0 }
         
-        var thisMonthGames = [Game]()
-        
-        for (game, _) in thisMonth {
-            thisMonthGames.append(game)
-        }
-        
-        let distantPast = games.filter { game, date -> Bool in
+        let distantPast = games.filter({ game, date -> Bool in
             return Date().timeIntervalSince1970 - date.timeIntervalSince1970 > 30 * 24 * 60 * 60
-        }
-        
-        var distantPastGames = [Game]()
-        
-        for (game, _) in distantPast {
-            distantPastGames.append(game)
-        }
+        }).map { $0.0 }
         
         var sortedGames = [(String, [Game])]()
         
-        if todayGames.count > 0 {
-            sortedGames.append(("Today", todayGames))
+        if today.count > 0 {
+            sortedGames.append(("Today", today))
         }
         
-        if yesterdayGames.count > 0 {
-            sortedGames.append(("Yesterday", yesterdayGames))
+        if yesterday.count > 0 {
+            sortedGames.append(("Yesterday", yesterday))
         }
         
-        if thisWeekGames.count > 0 {
-            sortedGames.append(("This week", thisWeekGames))
+        if thisWeek.count > 0 {
+            sortedGames.append(("This week", thisWeek))
         }
         
-        if thisMonthGames.count > 0 {
-            sortedGames.append(("This month", thisMonthGames))
+        if thisMonth.count > 0 {
+            sortedGames.append(("This month", thisMonth))
         }
         
-        if distantPastGames.count > 0 {
-            sortedGames.append(("Distant past", distantPastGames))
+        if distantPast.count > 0 {
+            sortedGames.append(("Distant past", distantPast))
         }
         
         return sortedGames
