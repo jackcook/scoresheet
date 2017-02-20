@@ -156,7 +156,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let filePath = "\(documentsDirectory)/\(file)"
                 
                 if let game = Game(filePath: filePath),
-                    let date = try FileManager.default.attributesOfItem(atPath: filePath)[.modificationDate] as? Date {
+                    let date = try FileManager.default.attributesOfItem(atPath: filePath)[.creationDate] as? Date {
                     
                     games.append((game, date))
                 }
@@ -218,7 +218,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        gameToSend = games[indexPath.row].0
+        gameToSend = dateSortedGames[indexPath.section].1[indexPath.row]
         performSegue(withIdentifier: "gameSegue", sender: self)
     }
 }
