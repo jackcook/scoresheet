@@ -73,3 +73,7 @@ struct Game {
         data.write(toFile: path, atomically: true)
     }
 }
+
+func ==(lhs: Game, rhs: Game) -> Bool {
+    return lhs.id == rhs.id
+}

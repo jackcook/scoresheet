@@ -19,7 +19,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private var dateSortedGames: [(String, [Game])] {
         let today = games.filter { game, date -> Bool in
-            Calendar.current.dateComponents([.day], from: date) == Calendar.current.dateComponents([.day], from: Date())
+            return Calendar.current.dateComponents([.day], from: date) == Calendar.current.dateComponents([.day], from: Date())
         }
         
         var todayGames = [Game]()
@@ -28,9 +28,24 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             todayGames.append(game)
         }
         
+        let yesterday = games.filter { game, date -> Bool in
+            if let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
+                return Calendar.current.dateComponents([.day], from: date) == Calendar.current.dateComponents([.day], from: yesterday)
+            }
+            
+            return false
+        }
+        
+        var yesterdayGames = [Game]()
+        
+        for (game, _) in yesterday {
+            yesterdayGames.append(game)
+        }
+        
         let thisWeek = games.filter { game, date -> Bool in
             return Date().timeIntervalSince1970 - date.timeIntervalSince1970 < 7 * 24 * 60 * 60
-                && Calendar.current.dateComponents([.day], from: date) != Calendar.current.dateComponents([.day], from: Date())
+                && !todayGames.contains { $0 == game }
+                && !yesterdayGames.contains { $0 == game }
         }
         
         var thisWeekGames = [Game]()
@@ -64,6 +79,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if todayGames.count > 0 {
             sortedGames.append(("Today", todayGames))
+        }
+        
+        if yesterdayGames.count > 0 {
+            sortedGames.append(("Yesterday", yesterdayGames))
         }
         
         if thisWeekGames.count > 0 {
