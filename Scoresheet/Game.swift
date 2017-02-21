@@ -73,7 +73,7 @@ struct Game {
         
         let data = [
             "creationDate": creationDate.timeIntervalSince1970,
-            "modificationDate": modificationDate.timeIntervalSince1970,
+            "modificationDate": Date().timeIntervalSince1970,
             "playerOne": playerOne.name ?? "Player One",
             "playerTwo": playerTwo.name ?? "Player Two",
             "points": pointsData

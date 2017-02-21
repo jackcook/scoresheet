@@ -17,6 +17,7 @@ class MenuCell: UITableViewCell {
     @IBOutlet weak var playerOneScoreLabel: UILabel!
     @IBOutlet weak var playerTwoScoreLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var separatorView: UIView!
     
@@ -93,6 +94,11 @@ class MenuCell: UITableViewCell {
             playerTwoLabel.font = UIFont.boldSystemFont(ofSize: 17)
             playerTwoScoreLabel.font = UIFont.boldSystemFont(ofSize: 17)
         }
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        dateLabel.text = formatter.string(from: game.creationDate)
     }
     
     func roundCorners(_ side: Side) {
