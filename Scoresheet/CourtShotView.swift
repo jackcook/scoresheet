@@ -10,13 +10,25 @@ import UIKit
 
 class CourtShotView: UIView {
     
+    var number = 0
+    
+    private var numberLabel: UILabel!
+    
+    override var tag: Int {
+        didSet {
+            numberLabel.text = "\(tag + 1)"
+        }
+    }
+    
     init() {
         super.init(frame: CGRect.zero)
         
-        backgroundColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
+        backgroundColor = .white
         
-        layer.borderWidth = 3
-        layer.borderColor = UIColor.white.cgColor
+        numberLabel = UILabel()
+        numberLabel.font = UIFont.systemFont(ofSize: 9, weight: UIFontWeightLight)
+        numberLabel.textColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1)
+        addSubview(numberLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,5 +39,9 @@ class CourtShotView: UIView {
         super.layoutSubviews()
         
         layer.cornerRadius = bounds.width / 2
+        
+        numberLabel.sizeToFit()
+        numberLabel.frame = CGRect(x: (bounds.width - numberLabel.frame.size.width) / 2, y: (bounds.height - numberLabel.frame.size.height) / 2, width: numberLabel.frame.size.width, height: numberLabel.frame.size.height)
+        print(numberLabel.frame)
     }
 }

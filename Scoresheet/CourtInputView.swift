@@ -200,7 +200,7 @@ class CourtInputView: UIView {
         
         for (idx, shot) in shots.enumerated() {
             let shotView = CourtShotView()
-            shotView.frame = CGRect(x: (CGFloat(shot.x) * bounds.width) - 6, y: (CGFloat(shot.y) * bounds.height) - 6, width: 12, height: 12)
+            shotView.frame = CGRect(x: (CGFloat(shot.x) * bounds.width) - 6, y: (CGFloat(shot.y) * bounds.height) - 6, width: 14, height: 14)
             shotView.tag = idx
             
             addSubview(shotView)
