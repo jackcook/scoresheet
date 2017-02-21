@@ -10,7 +10,9 @@ import Foundation
 
 struct Game {
     
+    var creationDate: Date
     var id: String
+    var modificationDate: Date
     var playerOne: Player
     var playerTwo: Player
     var points: [Point]
@@ -19,10 +21,14 @@ struct Game {
         id = NSString(string: NSString(string: filePath).lastPathComponent).deletingPathExtension
         
         if let data = NSDictionary(contentsOfFile: filePath),
+            let creationDate = data["creationDate"] as? Double,
+            let modificationDate = data["modificationDate"] as? Double,
             let playerOne = data["playerOne"] as? String,
             let playerTwo = data["playerTwo"] as? String,
             let points = data["points"] as? [[String: Any]] {
             
+            self.creationDate = Date(timeIntervalSince1970: creationDate)
+            self.modificationDate = Date(timeIntervalSince1970: modificationDate)
             self.playerOne = Player(position: .first, name: playerOne)
             self.playerTwo = Player(position: .second, name: playerTwo)
             
@@ -42,6 +48,8 @@ struct Game {
     
     init() {
         self.id = UUID().uuidString
+        self.creationDate = Date()
+        self.modificationDate = Date()
         self.playerOne = Player(position: .first, name: "Player One")
         self.playerTwo = Player(position: .second, name: "Player Two")
         self.points = [Point()]
@@ -49,6 +57,8 @@ struct Game {
     
     init(playerOne: Player, playerTwo: Player, points: [Point]) {
         self.id = UUID().uuidString
+        self.creationDate = Date()
+        self.modificationDate = Date()
         self.playerOne = playerOne
         self.playerTwo = playerTwo
         self.points = points
@@ -62,6 +72,8 @@ struct Game {
         }
         
         let data = [
+            "creationDate": creationDate.timeIntervalSince1970,
+            "modificationDate": modificationDate.timeIntervalSince1970,
             "playerOne": playerOne.name ?? "Player One",
             "playerTwo": playerTwo.name ?? "Player Two",
             "points": pointsData

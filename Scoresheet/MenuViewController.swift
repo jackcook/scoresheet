@@ -15,35 +15,46 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var newButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    private var games = [(Game, Date)]()
+    private var games = [Game]()
     
     private var dateSortedGames: [(String, [Game])] {
-        let today = games.filter({ game, date -> Bool in
-            return Calendar.current.dateComponents([.day], from: date) == Calendar.current.dateComponents([.day], from: Date())
-        }).map { $0.0 }
+        let today = games.filter({ game -> Bool in
+            return Calendar.current.dateComponents([.day], from: game.creationDate) == Calendar.current.dateComponents([.day], from: Date())
+        }).sorted { (game1, game2) -> Bool in
+            return game1.creationDate.timeIntervalSince1970 > game2.creationDate.timeIntervalSince1970
+        }
         
-        let yesterday = games.filter({ game, date -> Bool in
+        let yesterday = games.filter({ game -> Bool in
             if let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
-                return Calendar.current.dateComponents([.day], from: date) == Calendar.current.dateComponents([.day], from: yesterday)
+                return Calendar.current.dateComponents([.day], from: game.creationDate) == Calendar.current.dateComponents([.day], from: yesterday)
             }
             
             return false
-        }).map { $0.0 }
+        }).sorted { (game1, game2) -> Bool in
+            return game1.creationDate.timeIntervalSince1970 > game2.creationDate.timeIntervalSince1970
+        }
         
-        let thisWeek = games.filter({ game, date -> Bool in
+        let thisWeek = games.filter({ game -> Bool in
+            let date = game.creationDate
             return Date().timeIntervalSince1970 - date.timeIntervalSince1970 < 7 * 24 * 60 * 60
                 && !today.contains { $0 == game }
                 && !yesterday.contains { $0 == game }
-        }).map { $0.0 }
+        }).sorted { (game1, game2) -> Bool in
+            return game1.creationDate.timeIntervalSince1970 > game2.creationDate.timeIntervalSince1970
+        }
         
-        let thisMonth = games.filter({ game, date -> Bool in
-            return Date().timeIntervalSince1970 - date.timeIntervalSince1970 < 30 * 24 * 60 * 60
-                && Date().timeIntervalSince1970 - date.timeIntervalSince1970 > 7 * 24 * 60 * 60
-        }).map { $0.0 }
+        let thisMonth = games.filter({ game -> Bool in
+            return Date().timeIntervalSince1970 - game.creationDate.timeIntervalSince1970 < 30 * 24 * 60 * 60
+                && Date().timeIntervalSince1970 - game.creationDate.timeIntervalSince1970 > 7 * 24 * 60 * 60
+        }).sorted { (game1, game2) -> Bool in
+            return game1.creationDate.timeIntervalSince1970 > game2.creationDate.timeIntervalSince1970
+        }
         
-        let distantPast = games.filter({ game, date -> Bool in
-            return Date().timeIntervalSince1970 - date.timeIntervalSince1970 > 30 * 24 * 60 * 60
-        }).map { $0.0 }
+        let distantPast = games.filter({ game -> Bool in
+            return Date().timeIntervalSince1970 - game.creationDate.timeIntervalSince1970 > 30 * 24 * 60 * 60
+        }).sorted { (game1, game2) -> Bool in
+            return game1.creationDate.timeIntervalSince1970 > game2.creationDate.timeIntervalSince1970
+        }
         
         var sortedGames = [(String, [Game])]()
         
@@ -114,7 +125,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func reloadGames() {
-        games = [(Game, Date)]()
+        games = [Game]()
         
         let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         
@@ -125,10 +136,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let documentsDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
                 let filePath = "\(documentsDirectory)/\(file)"
                 
-                if let game = Game(filePath: filePath),
-                    let date = try FileManager.default.attributesOfItem(atPath: filePath)[.creationDate] as? Date {
-                    
-                    games.append((game, date))
+                if let game = Game(filePath: filePath) {
+                    games.append(game)
                 }
             }
             
