@@ -83,6 +83,8 @@ struct Game {
         let path = "\(documentsDirectory)/\(id).game"
         
         data.write(toFile: path, atomically: true)
+        
+        print("Game saved to \(path)")
     }
 }
 

@@ -42,6 +42,5 @@ class CourtShotView: UIView {
         
         numberLabel.sizeToFit()
         numberLabel.frame = CGRect(x: (bounds.width - numberLabel.frame.size.width) / 2, y: (bounds.height - numberLabel.frame.size.height) / 2, width: numberLabel.frame.size.width, height: numberLabel.frame.size.height)
-        print(numberLabel.frame)
     }
 }
