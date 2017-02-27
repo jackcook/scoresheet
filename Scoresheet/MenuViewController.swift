@@ -146,6 +146,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func newButtonPressed(sender: UIButton) {
+        gameToSend = nil
         performSegue(withIdentifier: "gameSegue", sender: self)
     }
     
